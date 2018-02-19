@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Salonidm</string>
+    <string name="btn_ok">OK</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="email">EMAIL</string>
+    <string name="password">PASSWORD</string>
+    <string name="user_name">USER NAME</string>
+    <string name="no_account_yet">NO ACCOUNT YET?</string>
+    <string name="default_notification_channel_id">AIzaSyAdKC7iMUO_MgE5IfqbJ9KpHYg--OFWW4A</string>
+
+</resources>
