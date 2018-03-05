@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="com.techease.salonidm.ui.fragments.MainFragment">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:weightSum="3"
+        android:layout_marginTop="30dp"
+        >
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/appointment"
+            android:src="@drawable/appointment"
+            android:layout_marginLeft="5dp"
+
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/my_client"
+            android:src="@drawable/my_client"
+            android:layout_marginLeft="5dp"
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/business_info"
+            android:src="@drawable/business_info"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:weightSum="3"
+        android:layout_marginTop="10dp"
+        >
+
+        <ImageButton
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/business_hr"
+            android:src="@drawable/business_hr"
+            android:layout_marginLeft="5dp"
+            />
+
+        <ImageButton
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/service"
+            android:src="@drawable/service"
+            android:layout_marginLeft="5dp"
+            />
+
+        <ImageButton
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/business_setting"
+            android:src="@drawable/business_setting"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:weightSum="3"
+        android:layout_marginTop="10dp"
+        >
+
+        <ImageButton
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/promotions"
+            android:src="@drawable/promotions"
+            android:layout_weight="1"
+
+            />
+
+        <ImageButton
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+           android:layout_weight="1"
+            android:id="@+id/commission"
+            android:src="@drawable/commission"
+            android:layout_marginLeft="5dp"
+            />
+
+        <ImageButton
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+           android:layout_weight="1"
+            android:id="@+id/portfolio"
+            android:src="@drawable/portfolio"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            />
+
+
+    </LinearLayout>
+
+</LinearLayout>

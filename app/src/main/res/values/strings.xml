@@ -2,10 +2,45 @@
     <string name="app_name">Salonidm</string>
     <string name="btn_ok">OK</string>
     <string name="sign_in">SIGN IN</string>
-    <string name="email">EMAIL</string>
+    <string name="email">USERNAME</string>
     <string name="password">PASSWORD</string>
     <string name="user_name">USER NAME</string>
     <string name="no_account_yet">NO ACCOUNT YET?</string>
     <string name="default_notification_channel_id">AIzaSyAdKC7iMUO_MgE5IfqbJ9KpHYg--OFWW4A</string>
+    <string name="business_hr">BUSINESS HOURS</string>
+    <string name="appointments">APPOINTMENTS</string>
+    <string name="bsns_info">BUSINESS INFO</string>
+    <string name="clients">MY CLIENTS</string>
+    <string name="services">SERVICES</string>
+    <string name="bsns_set">SETTINGS</string>
+    <string name="promotions">PROMOTIONS</string>
+    <string name="comissions">COMISSIONS</string>
+    <string name="portfolio">PORTFOLIO</string>
+    <string name="add_service">ADD SERVICE</string>
+    <string name="update_service">UPDATE SERVICE</string>
+    <string name="edit_service">EDIT SERVICE</string>
+    <string name="service_name">Service Name</string>
+    <string name="service_description">Service Description</string>
+    <string name="service_price">Service Price ($$)</string>
+    <string name="discount">Discount ($$)</string>
+    <string name="merchant_name">First Name</string>
+    <string name="service_duration">Service Duration</string>
+    <string name="merchant_email">Business Email</string>
+    <string name="salon_name">Business name</string>
+    <string name="website">Website</string>
+    <string name="address">Address</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="edit">EDIT</string>
+    <string name="save">SAVE</string>
+    <string name="licensed_number">Licensed Number</string>
+    <string name="day">DAY</string>
+    <string name="from">FROM</string>
+    <string name="to">TO</string>
+    <string name="time">08:30 AM</string>
+    <string name="brakr">BREAK :</string>
+    <string name="phone">Phone # :</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

@@ -2,10 +2,7 @@ package com.techease.salonidm.ui.fragments;
 
 
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -30,7 +26,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.techease.salonidm.R;
-import com.techease.salonidm.ui.activities.MainActivity;
 import com.techease.salonidm.utils.AlertsUtils;
 import com.techease.salonidm.utils.Configuration;
 
@@ -88,7 +83,7 @@ public class LoginFragment extends Fragment  {
     public void onDataInput() {
         strEmail = et_email_signin.getText().toString();
         strPassword = et_password_signin.getText().toString();
-        if ((!android.util.Patterns.EMAIL_ADDRESS.matcher(strEmail).matches())) {
+        if ((strEmail.length() < 3 ) ){
             et_email_signin.setError("Please enter valid email id");
         } else if (strPassword.equals("")) {
             et_password_signin.setError("Please enter your password");
@@ -102,25 +97,25 @@ public class LoginFragment extends Fragment  {
 
     public void apiCall() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,  Configuration.USER_URL+"Signup/login"
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,  "http://salonidm.com/salon_vendor/api/web/v1/merchant/login"
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("zma log ", response);
 
-                if (response.contains("true")) {
+                if (response.contains("200")) {
                     try {
                             if (alertDialog != null)
                                 alertDialog.dismiss();
-                        Log.d("zma log inner ", response);
-                        JSONObject jsonObject = new JSONObject(response).getJSONObject("user");
-                        String strApiToken = jsonObject.getString("token");
-                        String user_id=jsonObject.getString("user_id");
-                        editor.putString("token", strApiToken);
-                        editor.putString("user_id",user_id);
-                        editor.commit();
-                        startActivity(new Intent(getActivity(), MainActivity.class));
-                        getActivity().finish();
+
+                        JSONObject jsonObject = new JSONObject(response).getJSONObject("data");
+                        String salon_name = jsonObject.getString("salon_name");
+                        String merchant_name =jsonObject.getString("merchant_name");
+                        String merchant_email =jsonObject.getString("merchant_email");
+                        String vAuthToken = jsonObject.getString("authToken");
+
+                        editor.putString("token", vAuthToken).commit();
+                        Fragment fragment = new MainFragment();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
 
 
                     } catch (JSONException e) {
@@ -174,9 +169,11 @@ public class LoginFragment extends Fragment  {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("email", strEmail);
-                params.put("password", strPassword);
-                //   params.put("Accept", "application/json");
+                params.put("vUserName", strEmail);
+                params.put("vPassword", strPassword);
+                params.put("txDeviceToken", "sdfjhaskdfjh");
+                params.put("tiDeviceType", "android");
+                params.put("vVersion", "1");
                 return params;
             }
 

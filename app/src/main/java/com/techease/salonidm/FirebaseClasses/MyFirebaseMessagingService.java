@@ -15,7 +15,7 @@ import com.firebase.jobdispatcher.Job;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.techease.salonidm.R;
-import com.techease.salonidm.ui.activities.MainActivity;
+import com.techease.salonidm.ui.fragments.MainFragment;
 
 /**
  * Created by kaxhiftaj on 1/31/18.
@@ -100,7 +100,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
      * @param messageBody FCM message body received.
      */
     private void sendNotification(String messageBody) {
-        Intent intent = new Intent(context, MainActivity.class);
+        Intent intent = new Intent(context, MainFragment.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);

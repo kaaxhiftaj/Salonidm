@@ -1,5 +1,6 @@
 package com.techease.salonidm.ui.activities;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +11,8 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.techease.salonidm.R;
+import com.techease.salonidm.ui.fragments.LoginFragment;
+import com.techease.salonidm.ui.fragments.MainFragment;
 import com.techease.salonidm.utils.Configuration;
 
 public class SplashActivity extends AppCompatActivity {
@@ -33,11 +36,31 @@ public class SplashActivity extends AppCompatActivity {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorPrimary));
-            startActivity(new Intent(SplashActivity.this, MainActivity.class));
-            finish();
+
+
+            Thread timer = new Thread() {
+                public void run() {
+                    try {
+                        sleep(3000);
+
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } finally {
+
+                        editor.putString("check", "login").commit();
+                        startActivity(new Intent(SplashActivity.this, FullScreenActivity.class));
+                        finish();
+
+                    }
+                }
+            };
+            timer.start();
         } else {
 
-            startActivity(new Intent(SplashActivity.this , MainActivity.class));
+            editor.putString("check", "main").commit();
+            startActivity(new Intent(SplashActivity.this, FullScreenActivity.class));
+            finish();
+
         }
     }
 }

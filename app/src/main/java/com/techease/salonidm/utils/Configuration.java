@@ -5,7 +5,7 @@ package com.techease.salonidm.utils;
  */
 
 public class Configuration {
-        public static String USER_URL = "http://barapp.adadigbomma.com/";
+        public static String USER_URL = "salonidm.com/salon_vendor/api/web/v1/merchant/";
     public static String MY_PREF = "com.salonidm";
 
 

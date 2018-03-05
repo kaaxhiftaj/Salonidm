@@ -2,122 +2,144 @@ package com.techease.salonidm.utils;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.FileNameMap;
+import java.net.URLConnection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class GeneralUtils {
-    public static ProgressDialog progressDialog = null;
+    public static SharedPreferences sharedPreferences;
+    public static SharedPreferences.Editor editor;
+    public static File createImageFile(Context context) throws IOException {
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "Kashif" + timeStamp + "_";
+        File storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
 
-    public static void makeTextViewResizable(final AppCompatTextView tv,
-                                             final int maxLine, final String expandText, final boolean viewMore) {
+        return image;
+    }
 
-        if (tv.getTag() == null) {
-            tv.setTag(tv.getText());
+    public static String getMimeTypeofFile(File file) {
+        String url = file.getAbsolutePath();
+        FileNameMap fileNameMap = URLConnection.getFileNameMap();
+        String mime = fileNameMap.getContentTypeFor("file://" + url);
+
+        return mime;
+    }
+    public static byte[] getByteArrayFromFile(File file) {
+
+        byte[] b = new byte[(int) file.length()];
+        try {
+            FileInputStream fileInputStream = new FileInputStream(file);
+            fileInputStream.read(b);
+        } catch (FileNotFoundException e) {
+            System.out.println("File Not Found.");
+            e.printStackTrace();
+        } catch (IOException e1) {
+            System.out.println("Error Reading The File.");
+            e1.printStackTrace();
         }
-        ViewTreeObserver vto = tv.getViewTreeObserver();
-        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+        return b;
+    }
 
-            @SuppressWarnings("deprecation")
-            @Override
-            public void onGlobalLayout() {
+    public static String getRealPathFromURI(Context context,Uri uri) {
 
-                ViewTreeObserver obs = tv.getViewTreeObserver();
-                obs.removeGlobalOnLayoutListener(this);
-                if (maxLine == 0) {
-                    int lineEndIndex = tv.getLayout().getLineEnd(0);
-                    String text = tv.getText().subSequence(0,
-                            lineEndIndex - expandText.length() + 1)
-                            + " " + expandText;
-                    tv.setText(text);
-                    tv.setMovementMethod(LinkMovementMethod.getInstance());
-                    tv.setText(
-                            addClickablePartTextViewResizable(tv.getText()
-                                            .toString(), tv, maxLine, expandText,
-                                    viewMore), TextView.BufferType.SPANNABLE);
-                } else if (maxLine > 0 && tv.getLineCount() >= maxLine) {
-                    int lineEndIndex = tv.getLayout().getLineEnd(maxLine - 1);
-                    String text = tv.getText().subSequence(0,
-                            lineEndIndex - expandText.length() + 1)
-                            + " " + expandText;
-                    tv.setText(text);
-                    tv.setMovementMethod(LinkMovementMethod.getInstance());
-                    tv.setText(
-                            addClickablePartTextViewResizable(tv.getText()
-                                            .toString(), tv, maxLine, expandText,
-                                    viewMore), TextView.BufferType.SPANNABLE);
-                } else {
-                    int lineEndIndex = tv.getLayout().getLineEnd(
-                            tv.getLayout().getLineCount() - 1);
-                    String text = tv.getText().subSequence(0, lineEndIndex)
-                            + " " + expandText;
-                    tv.setText(text);
-                    tv.setMovementMethod(LinkMovementMethod.getInstance());
-                    tv.setText(
-                            addClickablePartTextViewResizable(tv.getText()
-                                            .toString(), tv, lineEndIndex, expandText,
-                                    viewMore), TextView.BufferType.SPANNABLE);
-                }
+        Cursor cursor = context.getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        int idx = cursor.getColumnIndex(MediaStore.Images.Media.DATA);
+        return cursor.getString(idx);
+    }
+    public static SharedPreferences getSharedPreferences(Context context){
+        //sharedPreferences = context.getSharedPreferences(Configuration.MY_PREF, 0);
+        return context.getSharedPreferences(Configuration.MY_PREF, 0);
+    }
+
+
+    public static Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
+
+
+    public static String getPath(final Context context, final Uri uri) {
+        final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
+        Log.i("URI",uri+"");
+        String result = uri+"";
+        // DocumentProvider
+        //  if (isKitKat && DocumentsContract.isDocumentUri(context, uri)) {
+        if (isKitKat && (result.contains("media.documents"))) {
+            String[] ary = result.split("/");
+            int length = ary.length;
+            String imgary = ary[length-1];
+            final String[] dat = imgary.split("%3A");
+            final String docId = dat[1];
+            final String type = dat[0];
+            Uri contentUri = null;
+            if ("image".equals(type)) {
+                contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+            } else if ("video".equals(type)) {
+            } else if ("audio".equals(type)) {
             }
-        });
-
-    }
-
-    private static SpannableStringBuilder addClickablePartTextViewResizable(
-            final String strSpanned, final AppCompatTextView tv, final int maxLine,
-            final String spanableText, final boolean viewMore) {
-        SpannableStringBuilder ssb = new SpannableStringBuilder(strSpanned);
-
-        if (strSpanned.contains(spanableText)) {
-            ssb.setSpan(
-                    new ClickableSpan() {
-
-                        @Override
-                        public void onClick(View widget) {
-
-                            if (viewMore) {
-                                tv.setLayoutParams(tv.getLayoutParams());
-                                tv.setText(tv.getTag().toString(),
-                                        TextView.BufferType.SPANNABLE);
-                                tv.invalidate();
-                                makeTextViewResizable(tv, -5, "...Read Less",
-                                        false);
-                                tv.setTextColor(Color.BLACK);
-                            } else {
-                                tv.setLayoutParams(tv.getLayoutParams());
-                                tv.setText(tv.getTag().toString(),
-                                        TextView.BufferType.SPANNABLE);
-                                tv.invalidate();
-                                makeTextViewResizable(tv, 5, "...Read More",
-                                        true);
-                                tv.setTextColor(Color.BLACK);
-                            }
-
-                        }
-                    }, strSpanned.indexOf(spanableText),
-                    strSpanned.indexOf(spanableText) + spanableText.length(), 0);
-
+            final String selection = "_id=?";
+            final String[] selectionArgs = new String[] {
+                    dat[1]
+            };
+            return getDataColumn(context, contentUri, selection, selectionArgs);
+        } else if ("content".equalsIgnoreCase(uri.getScheme())) {
+            return getDataColumn(context, uri, null, null);
         }
-        return ssb;
-
-    }
-
-
-    public static ProgressDialog showProgressDialog(Context context) {
-        if (progressDialog == null) {
-            ProgressDialog progressDialog1 = new ProgressDialog(context);
-            progressDialog1.setCancelable(false);
-            progressDialog1.setMessage("Please wait...");
-            progressDialog = progressDialog1;
+        // File
+        else if ("file".equalsIgnoreCase(uri.getScheme())) {
+            return uri.getPath();
         }
-        return progressDialog;
-
+        return null;
     }
 
+    public static String getDataColumn(Context context, Uri uri, String selection, String[] selectionArgs) {
+        Cursor cursor = null;
+        final String column = "_data";
+        final String[] projection = {
+                column
+        };
+        try {
+            cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                final int column_index = cursor.getColumnIndexOrThrow(column);
+                return cursor.getString(column_index);
+            }
+        } finally {
+            if (cursor != null)
+                cursor.close();
+        }
+        return null;
+    }
 }
