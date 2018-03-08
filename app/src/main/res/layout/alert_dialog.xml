@@ -37,7 +37,7 @@
         android:background="@color/colorPrimary"
         android:clickable="false"
         android:text="@string/btn_ok"
-        android:textColor="@color/colorAccent"
+        android:textColor="#FFF"
         android:textSize="15sp" />
 
 

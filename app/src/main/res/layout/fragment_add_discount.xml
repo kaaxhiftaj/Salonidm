@@ -1,0 +1,127 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="30dp"
+    tools:context="com.techease.salonidm.ui.fragments.AddDiscount">
+
+
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:padding="20dp"
+        android:text="Add Discount Code"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:gravity="center"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:paddingLeft="15dp"
+        android:hint="Discount Code"
+        android:id="@+id/discount_code"
+        />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:textSize="15dp"
+        android:paddingLeft="15dp"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:hint="Discount Percentage"
+        android:inputType="number"
+        android:foregroundGravity="right"
+        android:id="@+id/discount_percentage"
+        />
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        >
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:paddingLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="0.4"
+            android:focusable="false"
+            android:hint="Valid From"
+            android:id="@+id/valid_from"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:layout_weight="0.2"
+            android:paddingLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:hint="To"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:paddingLeft="15dp"
+            android:layout_weight="0.4"
+            android:focusable="false"
+            android:layout_marginTop="5dp"
+            android:hint="Valid To"
+            android:id="@+id/valid_to"
+            />
+
+    </LinearLayout>
+
+
+    <com.jaredrummler.materialspinner.MaterialSpinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"
+        android:hint="Active"
+        android:id="@+id/status"
+        />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:text="@string/save"
+        android:textColor="#FFF"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:id="@+id/add_dis"
+        />
+
+
+</LinearLayout>

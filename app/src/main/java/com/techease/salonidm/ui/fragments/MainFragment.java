@@ -94,6 +94,24 @@ public class MainFragment extends Fragment {
             }
         });
 
+        commission.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new DiscountFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("view").commit();
+            }
+        });
+
+
+        portfolio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new PortfolioFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("view").commit();
+            }
+        });
+
+
         return v;
     }
 

@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fff"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context="com.techease.salonidm.ui.fragments.PortfolioFragment">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <GridView
+            android:id="@+id/gridViewTabPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnWidth="90dp"
+            android:padding="5sp"
+            android:layout_centerInParent = "true"
+            android:horizontalSpacing="10dp"
+            android:numColumns="2"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="5dp"
+            ></GridView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/btnAdd"
+            android:layout_width="50dp"
+            android:layout_height="50sp"
+            android:layout_gravity="bottom|right"
+            android:background="@drawable/add"
+            android:layout_marginBottom="50sp"
+            android:layout_marginRight="10sp"
+            android:src="@drawable/add"
+            app:backgroundTint="@color/colorPrimary"
+            />
+    </FrameLayout>
+
+</LinearLayout>

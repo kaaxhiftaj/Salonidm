@@ -99,7 +99,7 @@
                     android:layout_marginBottom="50sp"
                     android:background="@color/colorPrimary"
                     android:text="@string/sign_in"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="#FFF"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
