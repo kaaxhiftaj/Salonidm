@@ -39,7 +39,7 @@ public class MainFragment extends Fragment {
     ImageButton business_setting;
 
     @BindView(R.id.promotions)
-    ImageButton promotions;
+    ImageButton discounts;
 
     @BindView(R.id.commission)
     ImageButton commission;
@@ -97,11 +97,19 @@ public class MainFragment extends Fragment {
         commission.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new DiscountFragment();
+                Fragment fragment = new ComissionsFragment();
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("view").commit();
             }
         });
 
+
+        discounts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new DiscountFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("view").commit();
+            }
+        });
 
         portfolio.setOnClickListener(new View.OnClickListener() {
             @Override
