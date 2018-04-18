@@ -62,6 +62,7 @@ public class DiscountsAdapter extends RecyclerView.Adapter<DiscountsAdapter.MyVi
                 String validfrom = model.getValid_from();
                 String validto = model.getValid_to();
                 String discount_offer_id = model.getDiscount_offer_id();
+                String usage = model.getUsage_limit();
 
 
                 Bundle bundle=new Bundle();
@@ -72,6 +73,7 @@ public class DiscountsAdapter extends RecyclerView.Adapter<DiscountsAdapter.MyVi
                 bundle.putString("discount_validation_from",validfrom);
                 bundle.putString("discount_validation_to",validto);
                 bundle.putString("discount_offer_id", discount_offer_id);
+                bundle.putString("usage_limit", usage );
 
                 fragment.setArguments(bundle);
                 Activity activity = (FullScreenActivity) context;

@@ -88,7 +88,7 @@ public class BusinessHoursFragment extends Fragment {
 
 
     private void apicall() {
-        final StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salon_vendor/api/web/v1/merchant-working-hours/timeslots"
+        final StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salonpro/api/web/v1/merchant-working-hours/timeslots"
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

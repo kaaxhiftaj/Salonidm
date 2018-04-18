@@ -24,10 +24,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.techease.salonidm.R;
-import com.techease.salonidm.ui.adapters.AppointmentsAdapter;
-import com.techease.salonidm.ui.adapters.ServiceAdapter;
-import com.techease.salonidm.ui.models.AppointmentModel;
-import com.techease.salonidm.ui.models.ServicesModel;
+import com.techease.salonidm.ui.adapters.ClientAdapter;
+import com.techease.salonidm.ui.adapters.ComissionsAdapter;
+import com.techease.salonidm.ui.models.ClientsModel;
+import com.techease.salonidm.ui.models.ComissionsModel;
 import com.techease.salonidm.utils.AlertsUtils;
 import com.techease.salonidm.utils.Configuration;
 import com.techease.salonidm.utils.InternetUtils;
@@ -45,54 +45,58 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public class AppointmentsFragment extends Fragment {
+public class MyClients extends Fragment {
 
     android.support.v7.app.AlertDialog alertDialog;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     String token;
-    ArrayList<AppointmentModel> appointment_model_list;
-    AppointmentsAdapter appointments_adapter;
+
+    ArrayList<ClientsModel> clients_model_list;
+    ClientAdapter client_adapter;
+
     Unbinder unbinder;
 
-    @BindView(R.id.rv_appointments)
+    @BindView(R.id.rv_clients)
     RecyclerView recyclerView;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_appointments, container, false);
-
+        View v = inflater.inflate(R.layout.fragment_my_clients, container, false);
         unbinder = ButterKnife.bind(this, v);
-        customActionBar();
+
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("token", "");
 
+        customActionBar();
 
         if (InternetUtils.isNetworkConnected(getActivity())) {
 
 
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            appointment_model_list = new ArrayList<>();
+            clients_model_list = new ArrayList<>();
             apicall();
             if (alertDialog == null)
                 alertDialog = AlertsUtils.createProgressDialog(getActivity());
             alertDialog.show();
-            appointments_adapter = new AppointmentsAdapter(getActivity(), appointment_model_list);
-            recyclerView.setAdapter(appointments_adapter);
+            client_adapter = new ClientAdapter(getActivity(), clients_model_list);
+            recyclerView.setAdapter(client_adapter);
 
         } else {
             Toast.makeText(getActivity(), "No Internet Connection", Toast.LENGTH_SHORT).show();
         }
+
 
         return v;
     }
 
 
     private void apicall() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salonpro/api/web/v1/order-detail/bookinglist"
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salonpro/api/web/v1/merchant/clients"
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -100,48 +104,32 @@ public class AppointmentsFragment extends Fragment {
                     try {
                         if (alertDialog != null)
                             alertDialog.dismiss();
-
                         JSONObject jsonObject = new JSONObject(response);
                         JSONArray jsonArr = jsonObject.getJSONArray("data");
                         for (int i = 0; i < jsonArr.length(); i++) {
                             JSONObject temp = jsonArr.getJSONObject(i);
 
-                            AppointmentModel model = new AppointmentModel();
-                            String merchant_id = temp.getString("merchant_id");
-                            String client_name = temp.getString("client_name");
-                            String service_name = temp.getString("service_name");
-                            String booking_start_time = temp.getString("booking_start_time");
-                            String booking_end_time = temp.getString("booking_end_time");
-                            String appointment_status = temp.getString("appointment_status");
-                            String appointment_type = temp.getString("appointment_type");
-                            String price = temp.getString("price");
-                            String payment_status = temp.getString("payment_status");
-                            String booking_date = temp.getString("booking_date");
+                            ClientsModel model = new ClientsModel();
+                            String name = temp.getString("client_fullname");
+                            String email = temp.getString("phone");
+                            String phone = temp.getString("email");
+                            String addres = temp.getString("address");
 
-                            model.setMerchant_id(merchant_id);
-                            model.setClient_name(client_name);
-                            model.setService_name(service_name);
-                            model.setBooking_start_time(booking_start_time);
-                            model.setBooking_end_time(booking_end_time);
-                            model.setAppointment_status(appointment_status);
-                            model.setAppointment_type(appointment_type);
-                            model.setPrice(price);
-                            model.setPayment_status(payment_status);
-                            model.setBooking_date(booking_date);
-
-                            appointment_model_list.add(model);
+                            model.setClient_name(name);
+                            model.setClient_email(email);
+                            model.setClient_phone(phone);
+                            model.setClient_address(addres);
+                            clients_model_list.add(model);
 
 
                         }
-                        appointments_adapter.notifyDataSetChanged();
+                        client_adapter.notifyDataSetChanged();
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                         if (alertDialog != null)
                             alertDialog.dismiss();
                     }
-
-
                 } else {
 
                     try {
@@ -196,7 +184,7 @@ public class AppointmentsFragment extends Fragment {
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
         ImageButton backbutton = (ImageButton) mCustomView.findViewById(R.id.back);
-        mTitleTextView.setText("Appointments");
+        mTitleTextView.setText("My Clients");
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
         backbutton.setOnClickListener(new View.OnClickListener() {
@@ -210,5 +198,4 @@ public class AppointmentsFragment extends Fragment {
         });
 
     }
-
 }

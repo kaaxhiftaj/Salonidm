@@ -11,7 +11,7 @@ public class DiscountsModel {
      String discount_percentage;
      String valid_from;
      String valid_to;
-     String status;
+     String status, usage_limit;
 
      public String getDiscount_offer_id() {
           return discount_offer_id;
@@ -71,7 +71,12 @@ public class DiscountsModel {
           this.status = status;
      }
 
+     public String getUsage_limit() {
+          return usage_limit;
+     }
 
-
+     public void setUsage_limit(String usage_limit) {
+          this.usage_limit = usage_limit;
+     }
 }
 

@@ -52,7 +52,7 @@ public class DiscountFragment extends Fragment {
     String token;
     ArrayList<DiscountsModel> discounts_model_list;
     DiscountsAdapter discounts_adapter;
-    String  merchant_id, dis_code, dis_percent, dis_valid_from, dis_valid_to, dis_status , discount_offer_id;
+    String  merchant_id, dis_code, dis_percent, dis_valid_from, dis_valid_to, dis_status , discount_offer_id, usage_limit;
     Unbinder unbinder;
 
     @BindView(R.id.rv_discount)
@@ -107,7 +107,7 @@ public class DiscountFragment extends Fragment {
 
 
     private void apicall() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salon_vendor/api/web/v1/auto-discount/discount-offer-list"
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salonpro/api/web/v1/auto-discount/discount-offer-list"
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -128,6 +128,8 @@ public class DiscountFragment extends Fragment {
                             dis_valid_from = temp.getString("valid_from");
                             dis_valid_to = temp.getString("valid_to");
                             dis_status = temp.getString("status");
+                            usage_limit = temp.getString("usage_limit");
+
 
 
                             model.setDiscount_offer_id(discount_offer_id);
@@ -137,7 +139,7 @@ public class DiscountFragment extends Fragment {
                             model.setValid_from(dis_valid_from);
                             model.setValid_to(dis_valid_to);
                             model.setStatus(dis_status);
-
+                            model.setUsage_limit(usage_limit);
                             discounts_model_list.add(model);
 
 

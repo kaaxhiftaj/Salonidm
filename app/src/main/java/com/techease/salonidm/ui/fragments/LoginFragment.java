@@ -97,7 +97,7 @@ public class LoginFragment extends Fragment  {
 
     public void apiCall() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,  "http://salonidm.com/salon_vendor/api/web/v1/merchant/login"
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,  "http://www.salonidm.com/salonpro/api/web/v1/merchant/login"
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

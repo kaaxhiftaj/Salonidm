@@ -3,6 +3,7 @@ package com.techease.salonidm.ui.fragments;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -119,6 +120,14 @@ public class MainFragment extends Fragment {
             }
         });
 
+
+        my_client.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new MyClients();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("view").commit();
+            }
+        });
 
         return v;
     }

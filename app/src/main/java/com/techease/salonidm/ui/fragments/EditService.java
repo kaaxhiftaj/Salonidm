@@ -199,7 +199,7 @@ public class EditService extends Fragment {
 
 
     public void apiCall() {
-        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, "http://www.salonidm.com/salon_vendor/api/web/v1/merchant-salon-services/editservice", new Response.Listener<NetworkResponse>() {
+        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, "http://www.salonidm.com/salonpro/api/web/v1/merchant-salon-services/editservice", new Response.Listener<NetworkResponse>() {
             @Override
             public void onResponse(NetworkResponse response) {
                 if (alertDialog != null)

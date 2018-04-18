@@ -1,4 +1,4 @@
-package com.techease.salonidm.ui.adapters;
+package com.techease.salonidm.ui.fragments;
 
 import android.Manifest;
 import android.content.Context;
@@ -122,7 +122,7 @@ public class AddPortfolio extends Fragment {
 
 
     public void apiCall() {
-        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, "http://www.salonidm.com/salon_vendor/api/web/v1/merchant-gallay-images/add-portfolio", new Response.Listener<NetworkResponse>() {
+        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, "http://www.salonidm.com/salonpro/api/web/v1/merchant-gallay-images/add-portfolio", new Response.Listener<NetworkResponse>() {
             @Override
             public void onResponse(NetworkResponse response) {
                 if (alertDialog != null)

@@ -2,10 +2,7 @@ package com.techease.salonidm.ui.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.design.widget.FloatingActionButton;
@@ -28,7 +25,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.techease.salonidm.R;
-import com.techease.salonidm.ui.adapters.AddPortfolio;
 import com.techease.salonidm.ui.adapters.PortfolioAdapter;
 import com.techease.salonidm.ui.models.PortfolioModel;
 import com.techease.salonidm.utils.AlertsUtils;
@@ -103,7 +99,7 @@ public class PortfolioFragment extends Fragment {
 
     private void apicall() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salon_vendor/api/web/v1/merchant-gallay-images/portfoliolist"
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salonpro/api/web/v1/merchant-gallay-images/portfoliolist"
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

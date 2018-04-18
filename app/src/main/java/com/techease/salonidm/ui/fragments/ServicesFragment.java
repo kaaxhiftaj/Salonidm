@@ -105,7 +105,7 @@ public class ServicesFragment extends Fragment {
 
 
     private void apicall() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salon_vendor/api/web/v1/merchant-salon-services/servicelist"
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salonpro/api/web/v1/merchant-salon-services/servicelist"
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

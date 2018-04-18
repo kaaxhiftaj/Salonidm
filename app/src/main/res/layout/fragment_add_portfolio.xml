@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     android:gravity="center"
-    tools:context="com.techease.salonidm.ui.adapters.AddPortfolio">
+    tools:context="com.techease.salonidm.ui.fragments.AddPortfolio">
 
 
     <ImageView

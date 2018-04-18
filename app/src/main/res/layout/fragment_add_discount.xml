@@ -48,6 +48,19 @@
         />
 
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:textSize="15dp"
+        android:paddingLeft="15dp"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:hint="Usage Limit"
+        android:inputType="number"
+        android:foregroundGravity="right"
+        android:id="@+id/usage_limit"
+        />
 
 
     <LinearLayout

@@ -55,6 +55,10 @@ public class EditDiscounts extends Fragment {
     @BindView(R.id.discount_percentage)
     EditText discount_percentage;
 
+    @BindView(R.id.usage_limit)
+    EditText usage_limit;
+
+
 
     @BindView(R.id.valid_from)
     EditText valid_from;
@@ -75,7 +79,7 @@ public class EditDiscounts extends Fragment {
     String token;
     private int day,month,year;
     private Calendar myCalendar;
-    String id, to, fro, stat, cod, percent, discount_offer_id;
+    String id, to, fro, stat, cod, percent, discount_offer_id, usage;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,11 +102,13 @@ public class EditDiscounts extends Fragment {
         fro = getArguments().getString("discount_validation_from");
         to = getArguments().getString("discount_validation_to");
         discount_offer_id = getArguments().getString("discount_offer_id");
+        usage = getArguments().getString("usage_limit");
 
         discount_code.setText(cod);
         discount_percentage.setText(percent);
         valid_from.setText(fro);
         valid_to.setText(to);
+        usage_limit.setText(usage);
 
 
         status.setItems(stat, "Active", "InActive");
@@ -143,6 +149,7 @@ public class EditDiscounts extends Fragment {
                     percent = discount_percentage.getText().toString();
                     fro = valid_from.getText().toString();
                     to = valid_to.getText().toString();
+                    usage = usage_limit.getText().toString();
 
                     apicall();
                     if (alertDialog == null)
@@ -163,7 +170,7 @@ public class EditDiscounts extends Fragment {
 
 
     private void apicall() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salon_vendor/api/web/v1/auto-discount/edit-discount-offer"
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salonpro/api/web/v1/auto-discount/edit-discount-offer"
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -216,6 +223,7 @@ public class EditDiscounts extends Fragment {
                 params.put("valid_from", fro);
                 params.put("valid_to", to);
                 params.put("status", stat);
+                params.put("usage_limit", usage);
 
                 return params;
             }

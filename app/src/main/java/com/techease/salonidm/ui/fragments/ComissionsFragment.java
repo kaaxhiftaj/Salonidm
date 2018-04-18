@@ -96,7 +96,7 @@ public class ComissionsFragment extends Fragment {
 
 
     private void apicall() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salon_vendor/api/web/v1/payment-detail/commission"
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salonpro/api/web/v1/payment-detail/commission"
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -184,7 +184,7 @@ public class ComissionsFragment extends Fragment {
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
         ImageButton backbutton = (ImageButton) mCustomView.findViewById(R.id.back);
-        mTitleTextView.setText("Services");
+        mTitleTextView.setText("Comissions");
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
         backbutton.setOnClickListener(new View.OnClickListener() {

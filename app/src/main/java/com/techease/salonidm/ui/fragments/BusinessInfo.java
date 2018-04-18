@@ -139,7 +139,7 @@ public class BusinessInfo extends Fragment {
 
 
     private void apicall() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salon_vendor/api/web/v1/merchant/saloninfo"
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salonpro/api/web/v1/merchant/saloninfo"
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

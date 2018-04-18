@@ -58,6 +58,9 @@ public class AddDiscount extends Fragment{
     @BindView(R.id.discount_code)
     EditText discount_code;
 
+    @BindView(R.id.usage_limit)
+    EditText usage_limit;
+
     @BindView(R.id.discount_percentage)
     EditText discount_percentage;
 
@@ -84,7 +87,7 @@ public class AddDiscount extends Fragment{
     private Calendar myCalendar;
     DatePickerDialog datePicker;
     DatePickerDialog.OnDateSetListener date;
-    public static String id, to, fro, stat, cod, percent;
+    public static String id, to, fro, stat, cod, percent , usage ;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -141,6 +144,8 @@ public class AddDiscount extends Fragment{
                     percent = discount_percentage.getText().toString();
                     fro = valid_from.getText().toString();
                     to = valid_to.getText().toString();
+                    usage = usage_limit.getText().toString();
+
 
                     apicall();
                     if (alertDialog == null)
@@ -159,7 +164,7 @@ public class AddDiscount extends Fragment{
 
 
     private void apicall() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salon_vendor/api/web/v1/auto-discount/add-discount-offer"
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salonpro/api/web/v1/auto-discount/add-discount-offer"
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -211,6 +216,7 @@ public class AddDiscount extends Fragment{
                 params.put("valid_from", fro);
                 params.put("valid_to", to);
                 params.put("status", stat);
+                params.put("usage_limit", usage);
 
                 return params;
             }
