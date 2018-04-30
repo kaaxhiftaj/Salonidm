@@ -151,7 +151,7 @@ public class LoginFragment extends Fragment  {
                 } else if (error instanceof AuthFailureError) {
                     AlertsUtils.showErrorDialog(getActivity(), "Auth Failure");
                 } else if (error instanceof ServerError) {
-                    AlertsUtils.showErrorDialog(getActivity(), "Server Error");
+                    AlertsUtils.showErrorDialog(getActivity(), "Wrong username or password");
                 } else if (error instanceof NetworkError) {
                     AlertsUtils.showErrorDialog(getActivity(), "Network Error");
                 } else if (error instanceof ParseError) {

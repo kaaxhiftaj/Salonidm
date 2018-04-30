@@ -129,6 +129,13 @@ public class MainFragment extends Fragment {
             }
         });
 
+        business_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new BusinessFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("view").commit();
+            }
+        });
         return v;
     }
 
