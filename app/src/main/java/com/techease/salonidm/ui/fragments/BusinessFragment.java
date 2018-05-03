@@ -27,6 +27,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.techease.salonidm.R;
 import com.techease.salonidm.utils.AlertsUtils;
 import com.techease.salonidm.utils.Configuration;
@@ -49,13 +50,13 @@ public class BusinessFragment extends Fragment {
 
 
     @BindView(R.id.travel_charge)
-    EditText travel_charge;
+    MaterialSpinner travel_charge;
 
     @BindView(R.id.free_travel_over)
-    EditText free_travel_over;
+    MaterialSpinner free_travel_over;
 
     @BindView(R.id.free_cancelation)
-    EditText free_cancelation;
+    MaterialSpinner free_cancelation;
 
     @BindView(R.id.temp_close_appoint)
     Switch temp_close_appoint;
@@ -74,7 +75,7 @@ public class BusinessFragment extends Fragment {
     android.support.v7.app.AlertDialog alertDialog;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    String token, bsns_id , merchant_id, temp_close , is_travel ,  min_book ;
+    String token, bsns_id , merchant_id, temp_close , is_travel ,  min_book , t_charge, t_over , free_cancel ;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -116,26 +117,79 @@ public class BusinessFragment extends Fragment {
         });
 
 
+        travel_charge.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                t_charge = item;
+
+            }
+        });
+
+        free_travel_over.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                t_over = item;
+
+            }
+        });
+
+        free_cancelation.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                free_cancel = item;
+
+            }
+        });
+
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                travel_charge.getText().toString().trim();
-                free_travel_over.getText().toString().trim();
-                free_cancelation.getText().toString().trim();
+
+
                 if (temp_close_appoint.isChecked() == true ){
                     temp_close = "1" ;
                 }else {
-                    temp_close = "0" ;
+                    temp_close = "0.00" ;
                 }
 
                 if (is_travel_charged.isChecked() == true){
                     is_travel = "1";
                 }else {
-                    is_travel = "0";
+                    is_travel = "0.00";
                 }
 
+                if (free_cancel.equals("At least 5 hours before appointment")){
+                    free_cancel = "5hr" ;
+                }else if (free_cancel.equals("At least 12 hours before appointment")){
+                    free_cancel = "12hr" ;
+                }
+                else if (free_cancel.equals("At least 24 hours before appointment")){
+                    free_cancel = "24hr" ;
+                }
+                else if (free_cancel.equals("At least 48 hours before appointment")){
+                    free_cancel = "48hr" ;
+                }
+
+                if (t_charge.equals("$10")){
+                    t_charge = "10" ;
+                }else if (t_charge.equals("$20")){
+                    t_charge = "20" ;
+                }
+
+
+                if (t_over.equals("$60")){
+                    t_over = "60" ;
+                }else if (t_over.equals("$80")){
+                    t_over = "80" ;
+                } else if (t_over.equals("$120")){
+                    t_over = "120" ;
+                }
                 apicallupdate();
             }
         });
@@ -162,21 +216,27 @@ public class BusinessFragment extends Fragment {
 
                         bsns_id = temp.getString("bussiess_id");
                         merchant_id = temp.getString("merchant_id");
-                        travel_charge.setText(temp.getString("travell_charge"));
-                        free_travel_over.setText(temp.getString("free_travel_over"));
-                        free_cancelation.setText(temp.getString("free_cancellation"));
-                        String temp_close = temp.getString("temp_close_appointment");
-                        String is_travel = temp.getString("is_travell_charge");
-                        String min_book = temp.getString("travell_charge");
+                        t_charge = temp.getString("travell_charge");
+                        t_over  = temp.getString("free_travel_over");
+                        free_cancel = temp.getString("free_cancellation");
+                         temp_close = temp.getString("temp_close_appointment");
+                        is_travel = temp.getString("is_travell_charge");
+                         min_book = temp.getString("travell_charge");
 
 
-                        if (temp_close.equals("0")) {
+                        if (temp.getString("temp_close_appointment").equals("1")) {
                             temp_close_appoint.setChecked(true);
                         }
 
-                        if (is_travel.equals("0")) {
+                        if (temp.getString("is_travell_charge").equals("1")) {
                             is_travel_charged.setChecked(true);
                         }
+
+
+                        travel_charge.setItems(t_charge, "10", "20");
+                        free_travel_over.setItems(t_over, "60" ,"80" , "120");
+                        free_cancelation.setItems(free_cancel, "At least 5 hours before appointment", "At least 12 hours before appointment" , "At least 24 hours before appointment" , "At least 48 hours before appointment");
+
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -272,8 +332,10 @@ public class BusinessFragment extends Fragment {
                     try {
                         jsonObject = new JSONObject(response);
                         JSONObject temp = jsonObject.getJSONObject("data");
+                        Fragment fragment = new MainFragment();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("view").commit();
 
-
+                        Toast.makeText(getActivity(), "Successfully Updated", Toast.LENGTH_SHORT).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
 
@@ -315,13 +377,17 @@ public class BusinessFragment extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("vAuthToken", token);
-                params.put("temp_close_appointment", token);
-                params.put("min_book_amnt", token);
-                params.put("travell_charge", token);
-                params.put("is_travell_charge", token);
-                params.put("free_travel_over", token);
-                params.put("free_cancellation", token);
-                params.put("business_logo", token);
+                params.put("temp_close_appointment", temp_close);
+                params.put("min_book_amnt", "10p");
+                params.put("travell_charge", t_charge);
+                params.put("is_travell_charge",is_travel );
+                params.put("free_travel_over", t_over);
+                params.put("free_cancellation", free_cancel);
+                params.put("business_logo", "");
+
+
+
+
                 return params;
             }
 
