@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
     tools:context="com.techease.salonidm.ui.fragments.AddService">
 
 
@@ -81,6 +80,7 @@
                 </LinearLayout>
 
 
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -129,6 +129,32 @@
 
 
                 </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+
+                    <com.jaredrummler.materialspinner.MaterialSpinner
+                        android:id="@+id/service_category"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:paddingLeft="15dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/btnripple"
+                        android:hint="Service Category"
+                        android:inputType="phone"
+                        />
+
+                </LinearLayout>
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -150,8 +176,8 @@
                         android:inputType="phone"
                          />
 
-
                 </LinearLayout>
+
             </LinearLayout>
 
 

@@ -1,7 +1,9 @@
 package com.techease.salonidm.ui.fragments;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +15,8 @@ import android.widget.TextView;
 
 import com.techease.salonidm.R;
 import com.techease.salonidm.ui.activities.FullScreenActivity;
+import com.techease.salonidm.ui.activities.SplashActivity;
+import com.techease.salonidm.utils.Configuration;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,7 +53,8 @@ public class MainFragment extends Fragment {
     ImageButton portfolio;
 
     Unbinder unbinder;
-
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +63,8 @@ public class MainFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_main, container, false);
         unbinder = ButterKnife.bind(this, v);
         customActionBar();
+        sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
         
         service.setOnClickListener(new View.OnClickListener() {
@@ -125,7 +132,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Fragment fragment = new MyClients();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("view").commit();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
             }
         });
 
@@ -148,10 +155,20 @@ public class MainFragment extends Fragment {
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
         ImageButton backbutton = (ImageButton) mCustomView.findViewById(R.id.back);
-        backbutton.setVisibility(View.INVISIBLE);
+        ImageButton logout = (ImageButton) mCustomView.findViewById(R.id.logout);
+        logout.setVisibility(View.VISIBLE);
+        backbutton.setVisibility(View.GONE);
         mTitleTextView.setText("SalonIDM");
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.clear().commit();
+                startActivity(new Intent(getActivity(), SplashActivity.class));
+            }
+        });
 
     }
 

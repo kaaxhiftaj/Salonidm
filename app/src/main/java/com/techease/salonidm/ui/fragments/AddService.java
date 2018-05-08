@@ -73,6 +73,9 @@ public class AddService extends Fragment {
     @BindView(R.id.service_duration)
     com.jaredrummler.materialspinner.MaterialSpinner service_duration;
 
+    @BindView(R.id.service_category)
+    com.jaredrummler.materialspinner.MaterialSpinner service_category;
+
     @BindView(R.id.add_image)
             ImageView add_image ;
 
@@ -85,7 +88,7 @@ public class AddService extends Fragment {
     SharedPreferences.Editor editor;
     String token;
     Unbinder unbinder ;
-    String name, desc, price, discount, duration;
+    String name, desc, price, discount, duration, service_cat;
     final int CAMERA_CAPTURE = 1;
     final int RESULT_LOAD_IMAGE = 2;
     File file;
@@ -130,6 +133,15 @@ public class AddService extends Fragment {
             }
         });
 
+
+        service_category.setItems("Service Category" , "service 1" , "service 2");
+        service_category.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                service_cat = item;
+            }
+        });
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -238,6 +250,7 @@ public class AddService extends Fragment {
                 params.put("vAuthToken", token);
                 params.put("service_name", name);
                 params.put("service_description", desc);
+                params.put("service_category", service_cat);
                 params.put("price", price);
                 params.put("discount", discount);
                 params.put("duration", duration);

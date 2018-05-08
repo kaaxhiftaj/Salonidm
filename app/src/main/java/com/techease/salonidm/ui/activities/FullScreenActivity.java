@@ -38,13 +38,13 @@ public class FullScreenActivity extends AppCompatActivity {
 
         sharedPreferences = FullScreenActivity.this.getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-        check = sharedPreferences.getString("token","");
+        check = sharedPreferences.getString("check","");
 
         if (check.equals("login")) {
             Fragment fragment = new LoginFragment();
             getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
 
-        }else {
+        }else if (check.equals("main")){
             Fragment fragment = new MainFragment();
             getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
 

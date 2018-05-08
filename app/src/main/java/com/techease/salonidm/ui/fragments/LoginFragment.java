@@ -3,14 +3,18 @@ package com.techease.salonidm.ui.fragments;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -26,6 +30,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.techease.salonidm.R;
+import com.techease.salonidm.ui.activities.SplashActivity;
 import com.techease.salonidm.utils.AlertsUtils;
 import com.techease.salonidm.utils.Configuration;
 
@@ -66,6 +71,7 @@ public class LoginFragment extends Fragment  {
         unbinder = ButterKnife.bind(this, v);
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
+        customActionBar();
 
 
         btn_signin.setOnClickListener(new View.OnClickListener() {
@@ -183,6 +189,27 @@ public class LoginFragment extends Fragment  {
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         mRequestQueue.add(stringRequest);
+    }
+
+
+
+    public void customActionBar() {
+        android.support.v7.app.ActionBar mActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        mActionBar.setDisplayShowHomeEnabled(false);
+        mActionBar.setDisplayShowTitleEnabled(false);
+        LayoutInflater mInflater = LayoutInflater.from(getActivity());
+        View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
+        TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+        ImageButton backbutton = (ImageButton) mCustomView.findViewById(R.id.back);
+        ImageButton logout = (ImageButton) mCustomView.findViewById(R.id.logout);
+        backbutton.setVisibility(View.GONE);
+        logout.setVisibility(View.GONE);
+        mTitleTextView.setText("SalonIDM");
+        mActionBar.setCustomView(mCustomView);
+        mActionBar.setDisplayShowCustomEnabled(true);
+
+
+
     }
 
 }
