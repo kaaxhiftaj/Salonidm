@@ -61,7 +61,7 @@ public class BusinessHoursFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_business_hours, container, false);
         unbinder = ButterKnife.bind(this, v);
-        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.otf");
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("token", "");

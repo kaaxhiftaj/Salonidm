@@ -65,7 +65,7 @@ public class BusinessHourAdapter extends RecyclerView.Adapter<BusinessHourAdapte
         Typeface typeface;
         public MyViewHolder(View itemView) {
             super(itemView);
-            typeface= Typeface.createFromAsset(context.getAssets(),"Fonts/Montserrat-Medium.ttf");
+            typeface= Typeface.createFromAsset(context.getAssets(),"Fonts/Montserrat-Medium.otf");
             day=(TextView)itemView.findViewById(R.id.day);
             to=(TextView) itemView.findViewById(R.id.to);
             from = (TextView) itemView.findViewById(R.id.from);

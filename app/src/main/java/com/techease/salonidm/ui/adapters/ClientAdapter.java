@@ -62,7 +62,7 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.MyViewHold
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            typeface= Typeface.createFromAsset(context.getAssets(),"Fonts/Montserrat-Medium.ttf");
+            typeface= Typeface.createFromAsset(context.getAssets(),"Fonts/Montserrat-Medium.otf");
             client_name=(TextView)itemView.findViewById(R.id.client_name);
             client_email=(TextView) itemView.findViewById(R.id.client_email);
             client_phone = (TextView) itemView.findViewById(R.id.client_phone);

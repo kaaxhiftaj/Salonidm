@@ -70,7 +70,7 @@ public class ComissionsAdapter extends RecyclerView.Adapter<ComissionsAdapter.My
         Typeface typeface;
         public MyViewHolder(View itemView) {
             super(itemView);
-            typeface= Typeface.createFromAsset(context.getAssets(),"Fonts/Montserrat-Medium.ttf");
+            typeface= Typeface.createFromAsset(context.getAssets(),"Fonts/Montserrat-Medium.otf");
             pay_method=(TextView)itemView.findViewById(R.id.payment_method);
             total_amount=(TextView) itemView.findViewById(R.id.total_amount);
             earn_amount = (TextView) itemView.findViewById(R.id.earned_amount);

@@ -74,7 +74,7 @@ public class LoginFragment extends Fragment  {
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         customActionBar();
-         typeface=Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
+         typeface=Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.otf");
 
         et_email_signin.setTypeface(typeface);
         et_password_signin.setTypeface(typeface);

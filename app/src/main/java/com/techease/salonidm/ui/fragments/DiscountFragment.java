@@ -75,7 +75,7 @@ public class DiscountFragment extends Fragment {
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("token", "");
 
-        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.otf");
 
         add_discount.setTypeface(typeface);
         if (InternetUtils.isNetworkConnected(getActivity())) {

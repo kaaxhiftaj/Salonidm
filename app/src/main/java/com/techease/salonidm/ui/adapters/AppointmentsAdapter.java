@@ -104,7 +104,7 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            typeface= Typeface.createFromAsset(context.getAssets(),"Fonts/Montserrat-Medium.ttf");
+            typeface= Typeface.createFromAsset(context.getAssets(),"Fonts/Montserrat-Medium.otf");
             service_name = (TextView) itemView.findViewById(R.id.service_name);
             client_name = (TextView) itemView.findViewById(R.id.client_name);
             appointment_status = (TextView)itemView.findViewById(R.id.appointment_status);

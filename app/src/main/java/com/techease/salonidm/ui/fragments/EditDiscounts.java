@@ -110,7 +110,7 @@ public class EditDiscounts extends Fragment {
         valid_to.setText(to);
         usage_limit.setText(usage);
 
-        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.otf");
 
         discount_code.setTypeface(typeface);
         valid_from.setTypeface(typeface);

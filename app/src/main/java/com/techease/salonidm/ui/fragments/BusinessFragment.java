@@ -85,7 +85,7 @@ public class BusinessFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_business, container, false);
 
-        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.otf");
         unbinder = ButterKnife.bind(this, v);
         customActionBar();
         if (alertDialog == null)

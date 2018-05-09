@@ -101,7 +101,7 @@ public class DiscountsAdapter extends RecyclerView.Adapter<DiscountsAdapter.MyVi
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            typeface= Typeface.createFromAsset(context.getAssets(),"Fonts/Montserrat-Medium.ttf");
+            typeface= Typeface.createFromAsset(context.getAssets(),"Fonts/Montserrat-Medium.otf");
             discount_code = (TextView) itemView.findViewById(R.id.discount_code);
             discount_percent = (TextView) itemView.findViewById(R.id.discount_percent);
             dis_status = (TextView)itemView.findViewById(R.id.discount_status);

@@ -66,7 +66,7 @@ public class PortfolioFragment extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("token", "");
-        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.otf");
 
         FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.btnAdd);
         fab.setOnClickListener(new View.OnClickListener() {

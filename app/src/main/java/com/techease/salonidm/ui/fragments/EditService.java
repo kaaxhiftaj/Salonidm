@@ -124,7 +124,7 @@ public class EditService extends Fragment {
         service_duration.setText(duration);
         Glide.with(getActivity()).load(image).into(add_image);
 
-        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.otf");
         service_name.setTypeface(typeface);
         service_desc.setTypeface(typeface);
         service_discount.setTypeface(typeface);

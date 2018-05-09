@@ -97,7 +97,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
         Typeface typeface;
         public MyViewHolder(View itemView) {
             super(itemView);
-            typeface= Typeface.createFromAsset(context.getAssets(),"Fonts/Montserrat-Medium.ttf");
+            typeface= Typeface.createFromAsset(context.getAssets(),"Fonts/Montserrat-Medium.otf");
             service_name=(TextView)itemView.findViewById(R.id.service_name);
            serice_details=(TextView) itemView.findViewById(R.id.service_details);
            service_image = (ImageView)itemView.findViewById(R.id.service_image);

@@ -87,7 +87,7 @@ public class AddPortfolio extends Fragment {
         token = sharedPreferences.getString("token", "");
         customActionBar();
 
-        typeface=Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
+        typeface=Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.otf");
         btnAdd.setTypeface(typeface);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {

@@ -60,7 +60,7 @@ public class AppointmentDetails extends Fragment {
         View v = inflater.inflate(R.layout.fragment_appointment_details, container, false);
         unbinder = ButterKnife.bind(this,v);
 
-        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.otf");
         Bundle bundle = new Bundle();
         String client_nam = getArguments().getString("client_name");
         String service_nam = getArguments().getString("service_name");

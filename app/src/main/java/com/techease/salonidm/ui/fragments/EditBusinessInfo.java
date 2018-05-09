@@ -95,7 +95,7 @@ public class EditBusinessInfo extends Fragment {
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("token", "");
 
-        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.otf");
         licensed_number.setTypeface(typeface);
         salon_name.setTypeface(typeface);
         salon_number.setTypeface(typeface);

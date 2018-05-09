@@ -106,7 +106,7 @@ public class AddDiscount extends Fragment{
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("token", "");
 
-        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.otf");
 
         discount_code.setTypeface(typeface);
         valid_from.setTypeface(typeface);
