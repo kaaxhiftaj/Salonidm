@@ -43,6 +43,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,9 +56,8 @@ import static com.techease.salonidm.utils.GeneralUtils.getMimeTypeofFile;
 public class AddService extends Fragment {
 
 
-
     @BindView(R.id.service_name)
-            EditText service_name;
+    EditText service_name;
 
     @BindView(R.id.service_description)
     EditText service_desc;
@@ -70,30 +70,31 @@ public class AddService extends Fragment {
     EditText service_discount;
 
 
+    @BindView(R.id.select_colours)
+    Button selectColoursButton;
+
     @BindView(R.id.service_duration)
     com.jaredrummler.materialspinner.MaterialSpinner service_duration;
 
-    @BindView(R.id.service_category)
-    com.jaredrummler.materialspinner.MaterialSpinner service_category;
-
     @BindView(R.id.add_image)
-            ImageView add_image ;
+    ImageView add_image;
 
     @BindView(R.id.sendButton)
-            Button send ;
+    Button send;
 
 
+    StringBuilder stringBuilder ;
     android.support.v7.app.AlertDialog alertDialog;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     String token;
-    Unbinder unbinder ;
+    Unbinder unbinder;
     String name, desc, price, discount, duration, service_cat;
     final int CAMERA_CAPTURE = 1;
     final int RESULT_LOAD_IMAGE = 2;
     File file;
-
-
+    CharSequence[] colours = {"HEALTHY HAIR CARE", "BRAIDS" , "MAKEUP" , "MEN'S HAIR CUT", "MICROBLADING", "NAIL TECHNICIAN", "MASSAGE THERAIST", "HAIR CUTTING" , "TWIST & DREADS"};
+    ArrayList<CharSequence> selectedColours;
 
 
     @Override
@@ -110,6 +111,16 @@ public class AddService extends Fragment {
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("token", "");
 
+
+        selectedColours = new ArrayList<CharSequence>();
+
+        selectColoursButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSelectColoursDialog();
+            }
+        });
+
         add_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,8 +133,8 @@ public class AddService extends Fragment {
             }
         });
 
-        service_duration.setItems("Service Duration" , "15 min", "30 min", "45 min", "1 hr", "1 hr 15 min", "1 hr 30 min", "1 hr 45 min", " 2 hr",
-                "2 hr 15 min" , " 2 hr 30 min" , " 2 hr 45 min" , " 3 hr");
+        service_duration.setItems("Service Duration", "15 min", "30 min", "45 min", "1 hr", "1 hr 15 min", "1 hr 30 min", "1 hr 45 min", " 2 hr",
+                "2 hr 15 min", " 2 hr 30 min", " 2 hr 45 min", " 3 hr");
 
         service_duration.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
@@ -133,15 +144,6 @@ public class AddService extends Fragment {
             }
         });
 
-
-        service_category.setItems("Service Category" , "service 1" , "service 2");
-        service_category.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
-
-            @Override
-            public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                service_cat = item;
-            }
-        });
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,12 +169,11 @@ public class AddService extends Fragment {
             service_price.setError("Please enter price");
         } else if (discount.equals("")) {
             service_discount.setError("Please enter discount");
-        }  else if (duration.equals("")) {
+        } else if (duration.equals("")) {
             Toast.makeText(getActivity(), "Set Service Duration", Toast.LENGTH_SHORT).show();
-        }else if(file == null) {
+        } else if (file == null) {
             Toast.makeText(getActivity(), "Please select image", Toast.LENGTH_SHORT).show();
-        }else
-         {
+        } else {
             // DialogUtils.showProgressSweetDialog(getActivity(), " Submiting your Application");
             if (alertDialog == null) {
                 alertDialog = AlertsUtils.createProgressDialog(getActivity());
@@ -250,7 +251,7 @@ public class AddService extends Fragment {
                 params.put("vAuthToken", token);
                 params.put("service_name", name);
                 params.put("service_description", desc);
-                params.put("service_category", service_cat);
+                params.put("service_category", stringBuilder.toString());
                 params.put("price", price);
                 params.put("discount", discount);
                 params.put("duration", duration);
@@ -356,6 +357,7 @@ public class AddService extends Fragment {
         mTitleTextView.setText("ADD SERVICE");
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
+
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -367,7 +369,68 @@ public class AddService extends Fragment {
         });
     }
 
+    protected void showSelectColoursDialog() {
 
+        boolean[] checkedColours = new boolean[colours.length];
+
+        int count = colours.length;
+
+        for (int i = 0; i < count; i++)
+
+            checkedColours[i] = selectedColours.contains(colours[i]);
+
+        DialogInterface.OnMultiChoiceClickListener coloursDialogListener = new DialogInterface.OnMultiChoiceClickListener() {
+
+            @Override
+
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                if (isChecked)
+
+                    selectedColours.add(colours[which]);
+
+                else
+
+                    selectedColours.remove(colours[which]);
+
+                onChangeSelectedColours();
+
+            }
+
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setTitle("Select Service Category");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+            } });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+
+            } });
+        builder.setMultiChoiceItems(colours, checkedColours, coloursDialogListener);
+
+        AlertDialog dialog = builder.create();
+
+        dialog.show();
+
+    }
+
+    protected void onChangeSelectedColours() {
+
+        stringBuilder = new StringBuilder();
+
+        for(CharSequence colour : selectedColours)
+
+            stringBuilder.append(colour + ",");
+
+        selectColoursButton.setText(stringBuilder.toString());
+
+    }
 
 
 }
