@@ -3,6 +3,7 @@ package com.techease.salonidm.ui.fragments;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -58,8 +59,6 @@ public class EditDiscounts extends Fragment {
     @BindView(R.id.usage_limit)
     EditText usage_limit;
 
-
-
     @BindView(R.id.valid_from)
     EditText valid_from;
 
@@ -79,6 +78,7 @@ public class EditDiscounts extends Fragment {
     String token;
     private int day,month,year;
     private Calendar myCalendar;
+    Typeface typeface;
     String id, to, fro, stat, cod, percent, discount_offer_id, usage;
 
     @Override
@@ -109,6 +109,15 @@ public class EditDiscounts extends Fragment {
         valid_from.setText(fro);
         valid_to.setText(to);
         usage_limit.setText(usage);
+
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
+
+        discount_code.setTypeface(typeface);
+        valid_from.setTypeface(typeface);
+        valid_to.setTypeface(typeface);
+        status.setTypeface(typeface);
+        edit_dis.setTypeface(typeface);
+        usage_limit.setTypeface(typeface);
 
 
         status.setItems(stat, "Active", "InActive");
@@ -244,6 +253,7 @@ public class EditDiscounts extends Fragment {
         LayoutInflater mInflater = LayoutInflater.from(getActivity());
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+        mTitleTextView.setTypeface(typeface);
         ImageButton backbutton = (ImageButton) mCustomView.findViewById(R.id.back);
         mTitleTextView.setText("Edit Discounts");
         mActionBar.setCustomView(mCustomView);

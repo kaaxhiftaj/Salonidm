@@ -2,6 +2,7 @@ package com.techease.salonidm.ui.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -52,7 +53,7 @@ public class BusinessHoursFragment extends Fragment {
 
     @BindView(R.id.rv_bsnshours)
     RecyclerView recyclerView;
-
+    Typeface typeface;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,7 +61,7 @@ public class BusinessHoursFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_business_hours, container, false);
         unbinder = ButterKnife.bind(this, v);
-
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("token", "");
@@ -184,6 +185,7 @@ public class BusinessHoursFragment extends Fragment {
         LayoutInflater mInflater = LayoutInflater.from(getActivity());
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+        mTitleTextView.setTypeface(typeface);
         ImageButton backbutton = (ImageButton)mCustomView.findViewById(R.id.back);
         mTitleTextView.setText("Business Hours");
         mActionBar.setCustomView(mCustomView);

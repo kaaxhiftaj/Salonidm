@@ -2,6 +2,7 @@ package com.techease.salonidm.ui.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -57,13 +58,14 @@ public class AppointmentsFragment extends Fragment {
 
     @BindView(R.id.rv_appointments)
     RecyclerView recyclerView;
-
+    Typeface typeface;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_appointments, container, false);
 
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
         unbinder = ButterKnife.bind(this, v);
         customActionBar();
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);

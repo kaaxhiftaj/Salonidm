@@ -9,7 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10sp"
+        android:layout_marginTop="20sp"
         android:weightSum="2"
         >
         <TextView
@@ -29,7 +31,6 @@
             android:layout_gravity="right"
             android:gravity="right"
             android:textSize="15dp"
-            android:textStyle="bold"
             android:layout_weight="1"
             android:foregroundGravity="right"
             android:id="@+id/merchant_name"
@@ -41,8 +42,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10sp"
+        android:layout_marginTop="20sp"
         android:weightSum="2"
         >
         <TextView
@@ -62,7 +64,6 @@
             android:layout_gravity="right"
             android:gravity="right"
             android:textSize="15dp"
-            android:textStyle="bold"
             android:layout_weight="1"
             android:foregroundGravity="right"
             android:id="@+id/merchant_email"
@@ -75,9 +76,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10sp"
+        android:layout_marginTop="20sp"
         android:weightSum="2"
         >
         <TextView
@@ -97,7 +98,6 @@
             android:layout_gravity="right"
             android:gravity="right"
             android:textSize="15dp"
-            android:textStyle="bold"
             android:layout_weight="1"
             android:foregroundGravity="right"
             android:id="@+id/salon_name"
@@ -110,9 +110,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10sp"
+        android:layout_marginTop="20sp"
         android:weightSum="2"
         >
         <TextView
@@ -132,7 +132,6 @@
             android:layout_gravity="right"
             android:gravity="right"
             android:textSize="15dp"
-            android:textStyle="bold"
             android:layout_weight="1"
             android:foregroundGravity="right"
             android:id="@+id/saloon_phone"
@@ -143,9 +142,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10sp"
+        android:layout_marginTop="20sp"
         android:weightSum="2"
         >
         <TextView
@@ -165,7 +164,6 @@
             android:layout_gravity="right"
             android:gravity="right"
             android:textSize="15dp"
-            android:textStyle="bold"
             android:layout_weight="1"
             android:foregroundGravity="right"
             android:id="@+id/website"
@@ -177,9 +175,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10sp"
+        android:layout_marginTop="20sp"
         android:weightSum="2"
         >
         <TextView
@@ -199,7 +197,6 @@
             android:layout_gravity="right"
             android:gravity="right"
             android:textSize="15dp"
-            android:textStyle="bold"
             android:layout_weight="1"
             android:foregroundGravity="right"
             android:id="@+id/address"
@@ -211,9 +208,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10sp"
+        android:layout_marginTop="20sp"
         android:weightSum="2"
         >
         <TextView
@@ -233,7 +230,6 @@
             android:layout_gravity="right"
             android:gravity="right"
             android:textSize="15dp"
-            android:textStyle="bold"
             android:layout_weight="1"
             android:foregroundGravity="right"
             android:id="@+id/city"
@@ -245,9 +241,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10sp"
+        android:layout_marginTop="20sp"
         android:weightSum="2"
         >
         <TextView
@@ -267,7 +263,6 @@
             android:layout_gravity="right"
             android:gravity="right"
             android:textSize="15dp"
-            android:textStyle="bold"
             android:layout_weight="1"
             android:foregroundGravity="right"
             android:id="@+id/state"
@@ -279,9 +274,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10sp"
+        android:layout_marginTop="20sp"
         android:weightSum="2"
         >
         <TextView
@@ -301,7 +296,6 @@
             android:layout_gravity="right"
             android:gravity="right"
             android:textSize="15dp"
-            android:textStyle="bold"
             android:layout_weight="1"
             android:foregroundGravity="right"
             android:id="@+id/licensed_number"
@@ -311,14 +305,12 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50sp"
         android:background="@color/colorPrimary"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
         android:text="@string/edit"
+        android:layout_gravity="bottom"
         android:textColor="#FFF"
-        android:textStyle="bold"
         android:textSize="20dp"
         android:id="@+id/edit_info"
         />

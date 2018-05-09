@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:clickable="true"
-                card_view:cardBackgroundColor="@color/colorAccent"
+                card_view:cardBackgroundColor="#fff"
                 card_view:cardCornerRadius="15dp"
                 card_view:cardPreventCornerOverlap="true"
                 card_view:cardUseCompatPadding="true">

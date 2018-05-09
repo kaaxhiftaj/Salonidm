@@ -20,6 +20,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
+                android:layout_margin="5sp"
                 android:src="@drawable/line"
                 android:id="@+id/service_image"
                 />
@@ -31,8 +32,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
                 android:text="@string/portfolio"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textSize="20dp" />
 
 
         </LinearLayout>
@@ -50,7 +50,7 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="10dp"
             android:layout_gravity="center|right"
             android:foregroundGravity="right|center"
             android:src="@drawable/edit"

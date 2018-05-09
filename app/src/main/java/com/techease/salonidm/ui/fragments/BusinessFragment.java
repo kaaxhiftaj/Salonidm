@@ -3,6 +3,7 @@ package com.techease.salonidm.ui.fragments;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -74,6 +75,7 @@ public class BusinessFragment extends Fragment {
     Unbinder unbinder;
     android.support.v7.app.AlertDialog alertDialog;
     SharedPreferences sharedPreferences;
+    Typeface typeface;
     SharedPreferences.Editor editor;
     String token, bsns_id , merchant_id, temp_close , is_travel ,  min_book , t_charge, t_over , free_cancel ;
 
@@ -83,6 +85,7 @@ public class BusinessFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_business, container, false);
 
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
         unbinder = ButterKnife.bind(this, v);
         customActionBar();
         if (alertDialog == null)
@@ -95,7 +98,9 @@ public class BusinessFragment extends Fragment {
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("token", "");
 
-
+        save.setTypeface(typeface);
+        free_cancelation.setTypeface(typeface);
+        free_travel_over.setTypeface(typeface);
         temp_close_appoint.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // do something, the isChecked will be
@@ -299,6 +304,7 @@ public class BusinessFragment extends Fragment {
         LayoutInflater mInflater = LayoutInflater.from(getActivity());
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+        mTitleTextView.setTypeface(typeface);
         ImageButton backbutton = (ImageButton) mCustomView.findViewById(R.id.back);
         mTitleTextView.setText("Business Settings");
         mActionBar.setCustomView(mCustomView);

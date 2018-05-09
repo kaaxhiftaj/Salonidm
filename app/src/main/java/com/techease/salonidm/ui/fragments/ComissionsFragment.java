@@ -2,6 +2,7 @@ package com.techease.salonidm.ui.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -56,7 +57,7 @@ public class ComissionsFragment extends Fragment {
     ComissionsAdapter comissions_adapter;
 
     Unbinder unbinder;
-
+    Typeface typeface;
     @BindView(R.id.rv_comissions)
     RecyclerView recyclerView;
 
@@ -70,6 +71,7 @@ public class ComissionsFragment extends Fragment {
 
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
         token = sharedPreferences.getString("token", "");
 
         customActionBar();
@@ -183,6 +185,7 @@ public class ComissionsFragment extends Fragment {
         LayoutInflater mInflater = LayoutInflater.from(getActivity());
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+        mTitleTextView.setTypeface(typeface);
         ImageButton backbutton = (ImageButton) mCustomView.findViewById(R.id.back);
         mTitleTextView.setText("Comissions");
         mActionBar.setCustomView(mCustomView);

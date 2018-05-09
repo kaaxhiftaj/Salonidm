@@ -3,6 +3,7 @@ package com.techease.salonidm.ui.adapters;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -93,13 +94,18 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
         TextView service_name, serice_details;
         ImageView service_image ;
         ImageButton edit ;
-
+        Typeface typeface;
         public MyViewHolder(View itemView) {
             super(itemView);
+            typeface= Typeface.createFromAsset(context.getAssets(),"Fonts/Montserrat-Medium.ttf");
             service_name=(TextView)itemView.findViewById(R.id.service_name);
            serice_details=(TextView) itemView.findViewById(R.id.service_details);
            service_image = (ImageView)itemView.findViewById(R.id.service_image);
            edit = (ImageButton)itemView.findViewById(R.id.edit_service);
+
+           serice_details.setTypeface(typeface);
+           service_name.setTypeface(typeface);
+
 
         }
 

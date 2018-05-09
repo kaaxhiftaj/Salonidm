@@ -74,7 +74,7 @@ public class AddPortfolio extends Fragment {
 
     @BindView(R.id.addImage)
     ImageView addImage ;
-
+    Typeface typeface;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -87,7 +87,8 @@ public class AddPortfolio extends Fragment {
         token = sharedPreferences.getString("token", "");
         customActionBar();
 
-
+        typeface=Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
+        btnAdd.setTypeface(typeface);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -285,6 +286,7 @@ public class AddPortfolio extends Fragment {
         LayoutInflater mInflater = LayoutInflater.from(getActivity());
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+        mTitleTextView.setTypeface(typeface);
         ImageButton backbutton = (ImageButton) mCustomView.findViewById(R.id.back);
         mTitleTextView.setText("Add Portfolio");
         mActionBar.setCustomView(mCustomView);

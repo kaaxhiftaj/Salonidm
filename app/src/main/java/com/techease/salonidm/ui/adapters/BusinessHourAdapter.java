@@ -6,6 +6,7 @@ package com.techease.salonidm.ui.adapters;
 
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,14 +62,20 @@ public class BusinessHourAdapter extends RecyclerView.Adapter<BusinessHourAdapte
 
         TextView day, to, from, brake ;
         android.support.v7.widget.SwitchCompat swich ;
-
+        Typeface typeface;
         public MyViewHolder(View itemView) {
             super(itemView);
+            typeface= Typeface.createFromAsset(context.getAssets(),"Fonts/Montserrat-Medium.ttf");
             day=(TextView)itemView.findViewById(R.id.day);
             to=(TextView) itemView.findViewById(R.id.to);
             from = (TextView) itemView.findViewById(R.id.from);
             brake = (TextView) itemView.findViewById(R.id.brake);
             swich = (android.support.v7.widget.SwitchCompat)itemView.findViewById(R.id.swich);
+
+            day.setTypeface(typeface);
+            to.setTypeface(typeface);
+            from.setTypeface(typeface);
+            brake.setTypeface(typeface);
 
         }
 

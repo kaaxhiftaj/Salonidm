@@ -2,6 +2,7 @@ package com.techease.salonidm.ui.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -59,7 +60,7 @@ public class MyClients extends Fragment {
 
     @BindView(R.id.rv_clients)
     RecyclerView recyclerView;
-
+    Typeface typeface;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,6 +72,7 @@ public class MyClients extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("token", "");
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
 
         customActionBar();
 
@@ -183,6 +185,7 @@ public class MyClients extends Fragment {
         LayoutInflater mInflater = LayoutInflater.from(getActivity());
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+        mTitleTextView.setTypeface(typeface);
         ImageButton backbutton = (ImageButton) mCustomView.findViewById(R.id.back);
         mTitleTextView.setText("My Clients");
         mActionBar.setCustomView(mCustomView);

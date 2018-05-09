@@ -3,6 +3,7 @@ package com.techease.salonidm.ui.adapters;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -66,13 +67,19 @@ public class ComissionsAdapter extends RecyclerView.Adapter<ComissionsAdapter.My
 
         TextView pay_method, total_amount, earn_amount, date;
 
-
+        Typeface typeface;
         public MyViewHolder(View itemView) {
             super(itemView);
+            typeface= Typeface.createFromAsset(context.getAssets(),"Fonts/Montserrat-Medium.ttf");
             pay_method=(TextView)itemView.findViewById(R.id.payment_method);
             total_amount=(TextView) itemView.findViewById(R.id.total_amount);
             earn_amount = (TextView) itemView.findViewById(R.id.earned_amount);
             date = (TextView) itemView.findViewById(R.id.date);
+
+            pay_method.setTypeface(typeface);
+            total_amount.setTypeface(typeface);
+            earn_amount.setTypeface(typeface);
+            date.setTypeface(typeface);
 
         }
 

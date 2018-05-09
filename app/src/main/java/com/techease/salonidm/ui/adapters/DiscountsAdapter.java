@@ -3,6 +3,7 @@ package com.techease.salonidm.ui.adapters;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -96,15 +97,22 @@ public class DiscountsAdapter extends RecyclerView.Adapter<DiscountsAdapter.MyVi
 
         TextView discount_code, discount_percent, dis_status, dis_valid;
         ImageButton edit_discount;
-
+        Typeface typeface;
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            typeface= Typeface.createFromAsset(context.getAssets(),"Fonts/Montserrat-Medium.ttf");
             discount_code = (TextView) itemView.findViewById(R.id.discount_code);
             discount_percent = (TextView) itemView.findViewById(R.id.discount_percent);
             dis_status = (TextView)itemView.findViewById(R.id.discount_status);
             dis_valid = (TextView) itemView.findViewById(R.id.validation);
             edit_discount = (ImageButton)itemView.findViewById(R.id.edit_discount);
+
+            dis_status.setTypeface(typeface);
+            dis_valid.setTypeface(typeface);
+            discount_code.setTypeface(typeface);
+            discount_percent.setTypeface(typeface);
+
 
         }
     }

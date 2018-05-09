@@ -55,7 +55,7 @@ public class PortfolioFragment extends Fragment {
     Typeface typefaceReg, typefaceBold;
     android.support.v7.app.AlertDialog alertDialog;
     Unbinder unbinder ;
-
+    Typeface typeface;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,6 +66,7 @@ public class PortfolioFragment extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("token", "");
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
 
         FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.btnAdd);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -179,6 +180,7 @@ public class PortfolioFragment extends Fragment {
         LayoutInflater mInflater = LayoutInflater.from(getActivity());
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+        mTitleTextView.setTypeface(typeface);
         ImageButton backbutton = (ImageButton) mCustomView.findViewById(R.id.back);
         mTitleTextView.setText("Portfolio");
         mActionBar.setCustomView(mCustomView);

@@ -3,6 +3,7 @@ package com.techease.salonidm.ui.fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -82,6 +83,7 @@ public class BusinessInfo extends Fragment {
     android.support.v7.app.AlertDialog alertDialog;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    Typeface typeface;
     String token;
     String m_name, m_email, s_name , s_website , s_address , s_city , s_state , s_licensed_number, s_saloon_phone ;
     @Override
@@ -94,7 +96,17 @@ public class BusinessInfo extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("token", "");
-
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
+        licensed_number.setTypeface(typeface);
+        salon_name.setTypeface(typeface);
+        saloon_phone.setTypeface(typeface);
+        edit_info.setTypeface(typeface);
+        city.setTypeface(typeface);
+        state.setTypeface(typeface);
+        website.setTypeface(typeface);
+        address.setTypeface(typeface);
+        merchant_email.setTypeface(typeface);
+        merchant_name.setTypeface(typeface);
 
         if (InternetUtils.isNetworkConnected(getActivity())) {
 
@@ -236,6 +248,7 @@ public class BusinessInfo extends Fragment {
         LayoutInflater mInflater = LayoutInflater.from(getActivity());
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+        mTitleTextView.setTypeface(typeface);
         ImageButton backbutton = (ImageButton)mCustomView.findViewById(R.id.back);
         mTitleTextView.setText("Business Information");
         mActionBar.setCustomView(mCustomView);

@@ -3,6 +3,7 @@ package com.techease.salonidm.ui.adapters;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -99,14 +100,19 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
 
         TextView service_name, client_name, appointment_status;
         LinearLayout appointments_layout;
-
+        Typeface typeface;
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            typeface= Typeface.createFromAsset(context.getAssets(),"Fonts/Montserrat-Medium.ttf");
             service_name = (TextView) itemView.findViewById(R.id.service_name);
             client_name = (TextView) itemView.findViewById(R.id.client_name);
             appointment_status = (TextView)itemView.findViewById(R.id.appointment_status);
             appointments_layout = (LinearLayout) itemView.findViewById(R.id.appointment_layout);
+
+            service_name.setTypeface(typeface);
+            client_name.setTypeface(typeface);
+            appointment_status.setTypeface(typeface);
 
 
         }

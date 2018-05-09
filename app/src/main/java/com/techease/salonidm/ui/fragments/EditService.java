@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -96,7 +97,7 @@ public class EditService extends Fragment {
     File file;
 
 
-
+    Typeface typeface;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -122,6 +123,14 @@ public class EditService extends Fragment {
         service_discount.setText("$"+discount);
         service_duration.setText(duration);
         Glide.with(getActivity()).load(image).into(add_image);
+
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
+        service_name.setTypeface(typeface);
+        service_desc.setTypeface(typeface);
+        service_discount.setTypeface(typeface);
+        service_duration.setTypeface(typeface);
+        service_price.setTypeface(typeface);
+        send.setTypeface(typeface);
 
         Uri uri = Uri.parse(image);
         file = new File(uri.getPath());
@@ -369,6 +378,7 @@ public class EditService extends Fragment {
         LayoutInflater mInflater = LayoutInflater.from(getActivity());
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+        mTitleTextView.setTypeface(typeface);
         ImageButton backbutton = (ImageButton) mCustomView.findViewById(R.id.back);
         mTitleTextView.setText("EDIT SERVICE");
         mActionBar.setCustomView(mCustomView);

@@ -1,6 +1,7 @@
 package com.techease.salonidm.ui.adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,14 +58,20 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.MyViewHold
 
 
         TextView client_name, client_email, client_phone, client_address;
-
+        Typeface typeface;
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            typeface= Typeface.createFromAsset(context.getAssets(),"Fonts/Montserrat-Medium.ttf");
             client_name=(TextView)itemView.findViewById(R.id.client_name);
             client_email=(TextView) itemView.findViewById(R.id.client_email);
             client_phone = (TextView) itemView.findViewById(R.id.client_phone);
             client_address = (TextView) itemView.findViewById(R.id.client_address);
+
+            client_address.setTypeface(typeface);
+            client_email.setTypeface(typeface);
+            client_name.setTypeface(typeface);
+            client_phone.setTypeface(typeface);
 
         }
 

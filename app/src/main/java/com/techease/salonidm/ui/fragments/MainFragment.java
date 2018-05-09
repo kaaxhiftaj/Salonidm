@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -53,6 +54,7 @@ public class MainFragment extends Fragment {
     ImageButton portfolio;
 
     Unbinder unbinder;
+    Typeface typeface;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
@@ -65,6 +67,7 @@ public class MainFragment extends Fragment {
         customActionBar();
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
 
         
         service.setOnClickListener(new View.OnClickListener() {
@@ -154,6 +157,7 @@ public class MainFragment extends Fragment {
         LayoutInflater mInflater = LayoutInflater.from(getActivity());
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+        mTitleTextView.setTypeface(typeface);
         ImageButton backbutton = (ImageButton) mCustomView.findViewById(R.id.back);
         ImageButton logout = (ImageButton) mCustomView.findViewById(R.id.logout);
         logout.setVisibility(View.VISIBLE);

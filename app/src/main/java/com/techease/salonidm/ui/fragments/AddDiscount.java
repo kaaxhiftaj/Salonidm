@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -88,7 +89,7 @@ public class AddDiscount extends Fragment{
     DatePickerDialog datePicker;
     DatePickerDialog.OnDateSetListener date;
     public static String id, to, fro, stat, cod, percent , usage ;
-
+    Typeface typeface;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -105,7 +106,14 @@ public class AddDiscount extends Fragment{
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("token", "");
 
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
 
+        discount_code.setTypeface(typeface);
+        valid_from.setTypeface(typeface);
+        valid_to.setTypeface(typeface);
+        status.setTypeface(typeface);
+        add_dis.setTypeface(typeface);
+        usage_limit.setTypeface(typeface);
         status.setItems("Choose ", "Active", "InActive");
         status.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
@@ -237,6 +245,7 @@ public class AddDiscount extends Fragment{
         LayoutInflater mInflater = LayoutInflater.from(getActivity());
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+        mTitleTextView.setTypeface(typeface);
         ImageButton backbutton = (ImageButton) mCustomView.findViewById(R.id.back);
         mTitleTextView.setText("Add Discounts");
         mActionBar.setCustomView(mCustomView);

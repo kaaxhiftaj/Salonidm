@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -96,7 +97,7 @@ public class AddService extends Fragment {
     CharSequence[] colours = {"HEALTHY HAIR CARE", "BRAIDS" , "MAKEUP" , "MEN'S HAIR CUT", "MICROBLADING", "NAIL TECHNICIAN", "MASSAGE THERAIST", "HAIR CUTTING" , "TWIST & DREADS"};
     ArrayList<CharSequence> selectedColours;
 
-
+    Typeface typeface;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -111,7 +112,13 @@ public class AddService extends Fragment {
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("token", "");
 
-
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
+        service_name.setTypeface(typeface);
+        service_desc.setTypeface(typeface);
+        service_discount.setTypeface(typeface);
+        service_duration.setTypeface(typeface);
+        service_price.setTypeface(typeface);
+        send.setTypeface(typeface);
         selectedColours = new ArrayList<CharSequence>();
 
         selectColoursButton.setOnClickListener(new View.OnClickListener() {
@@ -353,6 +360,7 @@ public class AddService extends Fragment {
         LayoutInflater mInflater = LayoutInflater.from(getActivity());
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+        mTitleTextView.setTypeface(typeface);
         ImageButton backbutton = (ImageButton) mCustomView.findViewById(R.id.back);
         mTitleTextView.setText("ADD SERVICE");
         mActionBar.setCustomView(mCustomView);

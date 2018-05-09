@@ -1,6 +1,7 @@
 package com.techease.salonidm.ui.fragments;
 
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -48,7 +49,7 @@ public class AppointmentDetails extends Fragment {
     TextView booking_date;
 
 
-
+    Typeface typeface;
     Unbinder unbinder;
     android.support.v7.app.AlertDialog alertDialog;
 
@@ -59,7 +60,7 @@ public class AppointmentDetails extends Fragment {
         View v = inflater.inflate(R.layout.fragment_appointment_details, container, false);
         unbinder = ButterKnife.bind(this,v);
 
-
+        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.ttf");
         Bundle bundle = new Bundle();
         String client_nam = getArguments().getString("client_name");
         String service_nam = getArguments().getString("service_name");
@@ -80,6 +81,18 @@ public class AppointmentDetails extends Fragment {
         price.setText(pric);
         payment_status.setText(payment_statu);
         booking_date.setText(booking_dat);
+
+        client_name.setTypeface(typeface);
+        service_name.setTypeface(typeface);
+        booking_date.setTypeface(typeface);
+        booking_end_time.setTypeface(typeface);
+        booking_start_time.setTypeface(typeface);
+        price.setTypeface(typeface);
+        payment_status.setTypeface(typeface);
+        appointment_status.setTypeface(typeface);
+        appointment_type.setTypeface(typeface);
+
+
 
 
 
