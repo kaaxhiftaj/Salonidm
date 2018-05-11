@@ -45,6 +45,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ServicesFragment extends Fragment {
 
@@ -62,6 +63,9 @@ public class ServicesFragment extends Fragment {
 
     @BindView(R.id.add_service)
     TextView add_service;
+
+    @BindView(R.id.iv_plus)
+    CircleImageView circleImageView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -96,6 +100,14 @@ public class ServicesFragment extends Fragment {
 
 
         add_service.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new AddService();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("view").commit();
+            }
+        });
+
+        circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Fragment fragment = new AddService();

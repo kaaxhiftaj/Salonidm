@@ -18,6 +18,7 @@
     <string name="portfolio">PORTFOLIO</string>
     <string name="add_service">ADD SERVICE</string>
     <string name="update_service">UPDATE SERVICE</string>
+    <string name="delete_service">DELETE THIS SERVICE</string>
     <string name="edit_service">EDIT SERVICE</string>
     <string name="service_name">Service Name</string>
     <string name="service_description">Description</string>

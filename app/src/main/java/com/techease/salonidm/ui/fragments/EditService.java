@@ -48,6 +48,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,7 +60,6 @@ import static com.techease.salonidm.utils.GeneralUtils.getMimeTypeofFile;
 
 
 public class EditService extends Fragment {
-
 
 
     @BindView(R.id.service_name)
@@ -80,23 +80,27 @@ public class EditService extends Fragment {
     MaterialSpinner service_duration;
 
     @BindView(R.id.add_image)
-    ImageView add_image ;
+    ImageView add_image;
 
     @BindView(R.id.sendButton)
-    Button send ;
+    Button send;
+
+    @BindView(R.id.btn_select_colours)
+    Button btnSelect_color;
 
 
     android.support.v7.app.AlertDialog alertDialog;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     String token;
-    Unbinder unbinder ;
-    String name, desc, price, discount, duration, service_id , image ;
+    Unbinder unbinder;
+    String name, desc, price, discount, duration, service_id, image;
     final int CAMERA_CAPTURE = 1;
     final int RESULT_LOAD_IMAGE = 2;
     File file;
-
-
+    StringBuilder stringBuilder;
+    CharSequence[] colours = {"HEALTHY HAIR CARE", "BRAIDS", "MAKEUP", "MEN'S HAIR CUT", "MICROBLADING", "NAIL TECHNICIAN", "MASSAGE THERAIST", "HAIR CUTTING", "TWIST & DREADS"};
+    ArrayList<CharSequence> selectedColours;
     Typeface typeface;
 
     @Override
@@ -104,7 +108,7 @@ public class EditService extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_edit_service, container, false);
-        unbinder = ButterKnife.bind(this, v );
+        unbinder = ButterKnife.bind(this, v);
 
         Bundle bundle = new Bundle();
         bundle.getString("id");
@@ -119,12 +123,12 @@ public class EditService extends Fragment {
 
         service_name.setText(name);
         service_desc.setText(desc);
-        service_price.setText("$"+price);
-        service_discount.setText("$"+discount);
+        service_price.setText("$" + price);
+        service_discount.setText("$" + discount);
         service_duration.setText(duration);
         Glide.with(getActivity()).load(image).into(add_image);
 
-        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.otf");
+        typeface = Typeface.createFromAsset(getActivity().getAssets(), "Fonts/Montserrat-Medium.otf");
         service_name.setTypeface(typeface);
         service_desc.setTypeface(typeface);
         service_discount.setTypeface(typeface);
@@ -142,6 +146,8 @@ public class EditService extends Fragment {
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("token", "");
 
+        selectedColours = new ArrayList<CharSequence>();
+
         add_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -157,7 +163,7 @@ public class EditService extends Fragment {
 
 
         service_duration.setItems(duration, "15 min", "30 min", "45 min", "1 hr", "1 hr 15 min", "1 hr 30 min", "1 hr 45 min", " 2 hr",
-                "2 hr 15 min" , " 2 hr 30 min" , " 2 hr 45 min" , " 3 hr");
+                "2 hr 15 min", " 2 hr 30 min", " 2 hr 45 min", " 3 hr");
 
         service_duration.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
@@ -168,10 +174,18 @@ public class EditService extends Fragment {
             }
         });
 
+        btnSelect_color.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSelectColoursDialog();
+            }
+        });
+
+
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onDataInput();
+               // onDataInput();
             }
         });
         return v;
@@ -194,9 +208,9 @@ public class EditService extends Fragment {
             service_discount.setError("Please enter discount");
         } else if (duration.equals("")) {
             service_duration.setError("Please enter duration");
-        } else if(file == null) {
+        } else if (file == null) {
             Toast.makeText(getActivity(), "Please select image", Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
             // DialogUtils.showProgressSweetDialog(getActivity(), " Submiting your Application");
             if (alertDialog == null) {
                 alertDialog = AlertsUtils.createProgressDialog(getActivity());
@@ -378,6 +392,8 @@ public class EditService extends Fragment {
         LayoutInflater mInflater = LayoutInflater.from(getActivity());
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+        TextView tvSave = mCustomView.findViewById(R.id.tvSave);
+        tvSave.setVisibility(View.VISIBLE);
         mTitleTextView.setTypeface(typeface);
         ImageView backbutton = (ImageView) mCustomView.findViewById(R.id.back);
         mTitleTextView.setText("EDIT SERVICE");
@@ -392,5 +408,76 @@ public class EditService extends Fragment {
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
             }
         });
+        tvSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onDataInput();
+            }
+        });
+    }
+
+    protected void showSelectColoursDialog() {
+
+        boolean[] checkedColours = new boolean[colours.length];
+
+        int count = colours.length;
+
+        for (int i = 0; i < count; i++)
+
+            checkedColours[i] = selectedColours.contains(colours[i]);
+
+        DialogInterface.OnMultiChoiceClickListener coloursDialogListener = new DialogInterface.OnMultiChoiceClickListener() {
+
+            @Override
+
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                if (isChecked)
+
+                    selectedColours.add(colours[which]);
+
+                else
+
+                    selectedColours.remove(colours[which]);
+
+                onChangeSelectedColours();
+
+            }
+
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setTitle("Select Service Category");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+
+            }
+        });
+        builder.setMultiChoiceItems(colours, checkedColours, coloursDialogListener);
+
+        AlertDialog dialog = builder.create();
+
+        dialog.show();
+
+    }
+
+    protected void onChangeSelectedColours() {
+
+        stringBuilder = new StringBuilder();
+
+        for (CharSequence colour : selectedColours)
+
+            stringBuilder.append(colour + ",");
+
+        btnSelect_color.setText(stringBuilder.toString());
+
     }
 }

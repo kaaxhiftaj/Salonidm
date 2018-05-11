@@ -144,25 +144,16 @@
                     <TextView
 
                         android:text="Select Colours"
-
                         android:id="@+id/textView1"
-
                         android:layout_width="wrap_content"
-
                         android:layout_height="wrap_content"
-
                         android:padding="5dip" />
 
                     <Button
-
                         android:layout_height="wrap_content"
-
                         android:layout_width="fill_parent"
-
                         android:text="- None Selected -"
-
                         android:id="@+id/select_colours"
-
                         android:padding="5dip" />
 
                 </LinearLayout>
