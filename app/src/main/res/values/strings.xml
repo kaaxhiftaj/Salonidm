@@ -20,7 +20,7 @@
     <string name="update_service">UPDATE SERVICE</string>
     <string name="edit_service">EDIT SERVICE</string>
     <string name="service_name">Service Name</string>
-    <string name="service_description">Service Description</string>
+    <string name="service_description">Description</string>
     <string name="service_price">Service Price ($$)</string>
     <string name="discount">Discount ($$)</string>
     <string name="merchant_name">First Name</string>

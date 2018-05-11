@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.techease.salonidm.R;
@@ -158,7 +159,7 @@ public class MainFragment extends Fragment {
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
         mTitleTextView.setTypeface(typeface);
-        ImageButton backbutton = (ImageButton) mCustomView.findViewById(R.id.back);
+        ImageView backbutton = (ImageView) mCustomView.findViewById(R.id.back);
         ImageButton logout = (ImageButton) mCustomView.findViewById(R.id.logout);
         logout.setVisibility(View.VISIBLE);
         backbutton.setVisibility(View.GONE);

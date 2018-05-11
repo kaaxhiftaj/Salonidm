@@ -14,18 +14,51 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvText"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:padding="20dp"
-                    android:text="@string/edit_service"
-                    android:textStyle="bold"
-                    android:textSize="25dp"
-                    android:gravity="center"
-                    />
+                    android:layout_height="wrap_content">
 
+                    <TextView
+                        android:id="@+id/tvCancel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_alignParentStart="true"
+                        android:padding="20dp"
+                        android:text="CANCEL"
+                        android:textStyle="normal"
+                        android:textSize="18dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:padding="20dp"
+                        android:text="@string/edit_service"
+                        android:textStyle="bold"
+                        android:textSize="16dp"
+                        android:textColor="#000"
+                        android:gravity="center"
+                        />
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="SAVE"
+                       android:layout_marginBottom="10dp"
+                       android:padding="20dp"
+                       android:textColor="@color/colorPrimary"
+                       android:textStyle="bold"
+                       android:textSize="18dp"
+                       android:layout_alignParentEnd="true"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#f3f3f3"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -38,9 +71,22 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="10dp"
+                        android:background="@drawable/btnripple"
                         android:gravity="center_horizontal"
                         android:orientation="horizontal">
 
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:paddingLeft="15dp"
+                            android:textDirection="ltr"
+                            android:hint="Service Name"
+                            android:background="@drawable/edittextshape"
+                            android:enabled="false"
+                            android:cursorVisible="false"
+                            android:clickable="false"
+                            />
 
                         <EditText
                             android:id="@+id/service_name"
@@ -48,13 +94,14 @@
                             android:layout_height="40dp"
                             android:layout_gravity="center"
                             android:paddingLeft="15dp"
-                            android:background="@drawable/btnripple"
+                            android:textDirection="rtl"
+                            android:background="@drawable/edittextshape"
                             android:hint="@string/service_name"
+                            android:paddingRight="5sp"
                             android:inputType="textEmailAddress"
                             />
 
                     </LinearLayout>
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -62,33 +109,22 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="10dp"
+                        android:background="@drawable/btnripple"
                         android:gravity="center_horizontal"
                         android:orientation="horizontal">
-
 
                         <EditText
-                            android:id="@+id/service_description"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="40dp"
-                            android:paddingLeft="15dp"
                             android:layout_gravity="center"
-                            android:background="@drawable/btnripple"
-                            android:hint="@string/service_description"
-                            android:inputType="textEmailAddress"
+                            android:paddingLeft="15dp"
+                            android:textDirection="ltr"
+                            android:hint="Price"
+                            android:background="@drawable/edittextshape"
+                            android:enabled="false"
+                            android:cursorVisible="false"
+                            android:clickable="false"
                             />
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_horizontal"
-                        android:orientation="horizontal">
-
 
 
                         <EditText
@@ -97,13 +133,15 @@
                             android:layout_height="40dp"
                             android:paddingLeft="15dp"
                             android:layout_gravity="center"
-                            android:background="@drawable/btnripple"
+                            android:textDirection="rtl"
+                            android:background="@drawable/edittextshape"
                             android:hint="@string/service_price"
+                            android:paddingRight="5sp"
                             android:inputType="textEmailAddress"
                             />
 
-
                     </LinearLayout>
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -112,22 +150,36 @@
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="10dp"
                         android:gravity="center_horizontal"
+                        android:background="@drawable/btnripple"
                         android:orientation="horizontal">
 
-
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:paddingLeft="15dp"
+                            android:textDirection="ltr"
+                            android:hint="Price"
+                            android:background="@drawable/edittextshape"
+                            android:enabled="false"
+                            android:cursorVisible="false"
+                            android:clickable="false"
+                            />
                         <EditText
                             android:id="@+id/service_discount"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:layout_gravity="center"
                             android:paddingLeft="15dp"
-                            android:background="@drawable/btnripple"
+                            android:textDirection="rtl"
+                            android:background="@drawable/edittextshape"
                             android:hint="@string/discount"
                             android:inputType="phone"
                             />
 
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
@@ -135,6 +187,7 @@
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="10dp"
                         android:gravity="center_horizontal"
+                        android:background="@drawable/btnripple"
                         android:orientation="horizontal">
 
 
@@ -151,6 +204,30 @@
 
 
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="170dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="start"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/service_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="15dp"
+                            android:background="@drawable/btnripple"
+                            android:hint="@string/service_description"
+                            android:paddingRight="5sp"
+                            android:gravity="start"
+                            android:inputType="textEmailAddress"
+                            />
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
 
@@ -159,7 +236,7 @@
                 <ImageView
                     android:id="@+id/add_image"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="150dp"
                     android:layout_gravity="center"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
@@ -181,7 +258,6 @@
                     android:textStyle="bold"
                     android:text="@string/update_service"
                     />
-
 
             </LinearLayout>
 

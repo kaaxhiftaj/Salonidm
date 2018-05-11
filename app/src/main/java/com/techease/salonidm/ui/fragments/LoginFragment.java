@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -206,7 +207,7 @@ public class LoginFragment extends Fragment  {
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
         mTitleTextView.setTypeface(typeface);
-        ImageButton backbutton = (ImageButton) mCustomView.findViewById(R.id.back);
+        ImageView backbutton = (ImageView) mCustomView.findViewById(R.id.back);
         ImageButton logout = (ImageButton) mCustomView.findViewById(R.id.logout);
         backbutton.setVisibility(View.GONE);
         logout.setVisibility(View.GONE);

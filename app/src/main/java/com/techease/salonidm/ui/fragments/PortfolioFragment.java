@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -181,7 +182,7 @@ public class PortfolioFragment extends Fragment {
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
         mTitleTextView.setTypeface(typeface);
-        ImageButton backbutton = (ImageButton) mCustomView.findViewById(R.id.back);
+        ImageView backbutton = (ImageView) mCustomView.findViewById(R.id.back);
         mTitleTextView.setText("Portfolio");
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);

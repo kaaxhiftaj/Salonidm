@@ -51,7 +51,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
 
        holder.service_name.setText(model.getService_name());
        holder.serice_details.setText("$" + model.getService_price() + " for " + model.getService_duration());
-        Glide.with(context).load(model.getService_image()).into(holder.service_image);
+       // Glide.with(context).load(model.getService_image()).into(holder.service_image);
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +93,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
 
         TextView service_name, serice_details;
         ImageView service_image ;
-        ImageButton edit ;
+        ImageView edit ;
         Typeface typeface;
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -101,7 +101,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.MyViewHo
             service_name=(TextView)itemView.findViewById(R.id.service_name);
            serice_details=(TextView) itemView.findViewById(R.id.service_details);
            service_image = (ImageView)itemView.findViewById(R.id.service_image);
-           edit = (ImageButton)itemView.findViewById(R.id.edit_service);
+           edit = (ImageView)itemView.findViewById(R.id.edit_service);
 
            serice_details.setTypeface(typeface);
            service_name.setTypeface(typeface);
