@@ -15,16 +15,19 @@
         android:layout_margin="10dp"
         >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="10dp">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:src="@drawable/bar"
+                android:layout_centerVertical="true"
                 android:layout_margin="5sp"
-                android:src="@drawable/line"
+                android:layout_marginTop="15sp"
                 android:id="@+id/service_image"
                 />
 
@@ -33,24 +36,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/service_image"
                 android:text="@string/portfolio"
-                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textSize="16dp"
                  />
 
+            <TextView
+                android:id="@+id/service_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/client_name"
+                android:layout_toRightOf="@id/service_image"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5sp"
+                android:gravity="bottom"
+                android:text="@string/service_name" />
 
-        </LinearLayout>
+
+        </RelativeLayout>
 
 
-        <TextView
-            android:id="@+id/service_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="100dp"
-            android:gravity="bottom"
-            android:text="@string/service_name" />
+
 
 
         <TextView

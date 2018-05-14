@@ -39,10 +39,10 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.MyViewHold
 
         final ClientsModel model=clientModelArrayList.get(position);
 
-        holder.client_name.setText("Name : " +model.getClient_name());
-        holder.client_phone.setText("Phone : " + model.getClient_phone());
-        holder.client_email.setText("Email : " + model.getClient_email());
-        holder.client_address.setText("Address :" + model.getClient_address());
+        holder.client_name.setText(model.getClient_name());
+        holder.client_phone.setText(model.getClient_phone());
+        holder.client_email.setText(model.getClient_email());
+        holder.client_address.setText(model.getClient_address());
 
     }
 
