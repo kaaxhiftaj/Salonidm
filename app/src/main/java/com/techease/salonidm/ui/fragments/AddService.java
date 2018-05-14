@@ -94,7 +94,9 @@ public class AddService extends Fragment {
     final int CAMERA_CAPTURE = 1;
     final int RESULT_LOAD_IMAGE = 2;
     File file;
-    CharSequence[] colours = {"HEALTHY HAIR CARE", "BRAIDS" , "MAKEUP" , "MEN'S HAIR CUT", "MICROBLADING", "NAIL TECHNICIAN", "MASSAGE THERAIST", "HAIR CUTTING" , "TWIST & DREADS"};
+    CharSequence[] colours = {"HEALTHY HAIR CARE", "BRAIDS" , "MAKEUP" , "MEN'S HAIR CUT", "MICROBLADING",
+            "NAIL TECHNICIAN", "MASSAGE THERAIST", "EYELASH EXTENSIONS" ,"HAIR CUTTING" , "TWIST & DREADS"};
+
     ArrayList<CharSequence> selectedColours;
 
     Typeface typeface;
@@ -258,7 +260,19 @@ public class AddService extends Fragment {
                 params.put("vAuthToken", token);
                 params.put("service_name", name);
                 params.put("service_description", desc);
-                params.put("service_category", stringBuilder.toString());
+                params.put("service_category", stringBuilder.toString().
+                        replace("HEALTHY HAIR CARE", "1").
+                        replace("BRAIDS", "2").
+                        replace("MAKEUP", "3").
+                        replace("MEN'S HAIR CUT", "4").
+                        replace("MICROBLADING", "5").
+                        replace("NAIL TECHNICIAN", "6").
+                        replace("MASSAGE THERAIST", "7").
+                        replace("EYELASH EXTENSIONS", "8").
+                        replace("HAIR CUTTING", "11").
+                        replace("TWIST & DREADS", "10")
+
+                );
                 params.put("price", price);
                 params.put("discount", discount);
                 params.put("duration", duration);
