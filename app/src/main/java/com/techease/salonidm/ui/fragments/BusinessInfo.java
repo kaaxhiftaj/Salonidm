@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,18 +76,22 @@ public class BusinessInfo extends Fragment {
     TextView licensed_number;
 
     @BindView(R.id.saloon_phone)
-    TextView saloon_phone ;
+    TextView saloon_phone;
+
+    @BindView(R.id.services_type)
+    TextView et_services_type;
 
     @BindView(R.id.edit_info)
-    Button edit_info ;
+    Button edit_info;
 
-    Unbinder unbinder ;
+    Unbinder unbinder;
     android.support.v7.app.AlertDialog alertDialog;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     Typeface typeface;
     String token;
-    String m_name, m_email, s_name , s_website , s_address , s_city , s_state , s_licensed_number, s_saloon_phone ;
+    String m_name, m_email, s_name, s_website, s_address, s_city, s_state, s_licensed_number, s_saloon_phone,s_services_type;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -97,7 +102,7 @@ public class BusinessInfo extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences(Configuration.MY_PREF, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("token", "");
-        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.otf");
+        typeface = Typeface.createFromAsset(getActivity().getAssets(), "Fonts/Montserrat-Medium.otf");
         licensed_number.setTypeface(typeface);
         salon_name.setTypeface(typeface);
         saloon_phone.setTypeface(typeface);
@@ -128,27 +133,25 @@ public class BusinessInfo extends Fragment {
             public void onClick(View v) {
                 Fragment fragment = new EditBusinessInfo();
 
-                Bundle bundle=new Bundle();
-                bundle.putString("merchant_name",m_name);
-                bundle.putString("merchant_email",m_email);
-                bundle.putString("salon_name",s_name);
-                bundle.putString("address",s_address);
-                bundle.putString("website",s_website);
-                bundle.putString("state",s_state);
-                bundle.putString("city",s_city);
-                bundle.putString("licensed_number",s_licensed_number);
-                bundle.putString("salon_phone",s_saloon_phone);
+                Bundle bundle = new Bundle();
+                bundle.putString("merchant_name", m_name);
+                bundle.putString("merchant_email", m_email);
+                bundle.putString("salon_name", s_name);
+                bundle.putString("address", s_address);
+                bundle.putString("website", s_website);
+                bundle.putString("state", s_state);
+                bundle.putString("serviceType",s_services_type);
+                bundle.putString("city", s_city);
+                bundle.putString("licensed_number", s_licensed_number);
+                bundle.putString("salon_phone", s_saloon_phone);
                 fragment.setArguments(bundle);
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("view").commit();
             }
         });
 
 
-
         return v;
     }
-
-
 
 
     private void apicall() {
@@ -165,30 +168,31 @@ public class BusinessInfo extends Fragment {
                         JSONObject temp = jsonObject.getJSONObject("data");
 
 
-                             m_name = temp.getString("merchant_name");
-                            m_email = temp.getString("merchant_email");
-                             s_name = temp.getString("salon_name");
-                             s_website = temp.getString("website");
-                            s_address = temp.getString("address");
-                            s_city = temp.getString("city");
-                            s_state = temp.getString("state");
-                            s_licensed_number = temp.getString("licensed_number");
-                            s_saloon_phone = temp.getString("salon_phone");
-
-                             merchant_name.setText(m_name);
-                             merchant_email.setText(m_email);
-                             salon_name.setText(s_name);
-                             website.setText(s_website);
-                             address.setText(s_address);
-                             city.setText(s_city);
-                             state.setText(s_state);
-                             saloon_phone.setText(s_saloon_phone);
-                             licensed_number.setText(s_licensed_number);
+                        m_name = temp.getString("merchant_name");
+                        m_email = temp.getString("merchant_email");
+                        s_name = temp.getString("salon_name");
+                        s_website = temp.getString("website");
+                        s_address = temp.getString("address");
+                        s_city = temp.getString("city");
+                        s_state = temp.getString("state");
+                        s_licensed_number = temp.getString("licensed_number");
+                        s_saloon_phone = temp.getString("salon_phone");
+                        s_services_type = temp.getString("service_type");
 
 
+                        merchant_name.setText(m_name);
+                        merchant_email.setText(m_email);
+                        salon_name.setText(s_name);
+                        website.setText(s_website);
+                        address.setText(s_address);
+                        city.setText(s_city);
+                        state.setText(s_state);
+                        saloon_phone.setText(s_saloon_phone);
+                        licensed_number.setText(s_licensed_number);
+                        et_services_type.setText(s_services_type);
 
 
-                        } catch (JSONException e) {
+                    } catch (JSONException e) {
                         e.printStackTrace();
                         if (alertDialog != null)
                             alertDialog.dismiss();
@@ -241,7 +245,6 @@ public class BusinessInfo extends Fragment {
     }
 
 
-
     public void customActionBar() {
         android.support.v7.app.ActionBar mActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         mActionBar.setDisplayShowHomeEnabled(false);
@@ -250,7 +253,7 @@ public class BusinessInfo extends Fragment {
         View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
         mTitleTextView.setTypeface(typeface);
-        ImageView backbutton = (ImageView)mCustomView.findViewById(R.id.back);
+        ImageView backbutton = (ImageView) mCustomView.findViewById(R.id.back);
         mTitleTextView.setText("Business Information");
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);

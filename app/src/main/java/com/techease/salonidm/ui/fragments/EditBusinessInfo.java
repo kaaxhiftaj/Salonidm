@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +65,9 @@ public class EditBusinessInfo extends Fragment {
     @BindView(R.id.state)
     MaterialSpinner state;
 
+    @BindView(R.id.servicesType)
+    MaterialSpinner services_type;
+
     @BindView(R.id.city)
     EditText city;
 
@@ -82,7 +86,7 @@ public class EditBusinessInfo extends Fragment {
     SharedPreferences.Editor editor;
     Typeface typeface;
     String token;
-    String m_name, m_email, s_name, s_website, s_address, s_city, s_state, s_licensed_number, s_salon_phone ;
+    String m_name, m_email, s_name, s_website, s_address, s_city, s_state, s_licensed_number, s_salon_phone,s_service;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -117,6 +121,7 @@ public class EditBusinessInfo extends Fragment {
         s_address = getArguments().getString("address");
         s_city = getArguments().getString("city");
         s_state = getArguments().getString("state");
+        s_service = getArguments().getString("serviceType");
         s_licensed_number = getArguments().getString("licensed_number");
         s_salon_phone = getArguments().getString("salon_phone");
 
@@ -139,6 +144,14 @@ public class EditBusinessInfo extends Fragment {
             }
         });
 
+        services_type.setItems(s_service,"I'm Mobile","I'm at the Salon","Mobile and At Salon");
+
+        services_type.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+                s_service = (String) item;
+            }
+        });
 
         edit_info.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,7 +190,16 @@ public class EditBusinessInfo extends Fragment {
                     }else if (s_state.equals("Florida")){
                         s_state = "10";
                     }
-                    
+
+                    if((s_service.equals("I'm Mobile"))){
+                        s_service = "1";
+                    }
+                    else if(s_service.equals("I'm at the Salon")){
+                        s_service = "2";
+                    }
+                    else if(s_service.equals("Mobile and At Salon")){
+                        s_service = "3";
+                    }
 
                     apicall();
                     if (alertDialog == null)
@@ -251,6 +273,7 @@ public class EditBusinessInfo extends Fragment {
                 params.put("website", s_website);
                 params.put("address", s_address);
                 params.put("state", s_state);
+                params.put("service_type",s_service);
                 params.put("city", s_city);
                 params.put("salon_phone", s_salon_phone);
                 params.put("licensed_number",s_licensed_number);

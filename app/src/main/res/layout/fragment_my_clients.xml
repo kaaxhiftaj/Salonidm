@@ -1,13 +1,26 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.techease.salonidm.ui.fragments.MyClients">
 
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/rv_clients"
+        android:layout_marginBottom="50sp"
         ></android.support.v7.widget.RecyclerView>
-</FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:textColor="#000"
+        android:layout_marginBottom="5sp"
+        android:padding="5sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="Client information is private and\n will never be published or shared"/>
+</RelativeLayout>

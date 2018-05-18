@@ -27,7 +27,7 @@
         android:textAllCaps="true"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#000"
-        android:textSize="15sp"
+        android:textSize="17sp"
         android:textStyle="bold" />
 
     <TextView

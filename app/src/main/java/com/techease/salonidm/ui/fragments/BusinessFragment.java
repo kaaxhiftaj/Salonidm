@@ -78,7 +78,7 @@ public class BusinessFragment extends Fragment {
     SharedPreferences sharedPreferences;
     Typeface typeface;
     SharedPreferences.Editor editor;
-    String token, bsns_id , merchant_id, temp_close , is_travel ,  min_book , t_charge, t_over , free_cancel ;
+    String token, bsns_id, merchant_id, temp_close, is_travel, min_book, t_charge, t_over, free_cancel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -86,7 +86,7 @@ public class BusinessFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_business, container, false);
 
-        typeface= Typeface.createFromAsset(getActivity().getAssets(),"Fonts/Montserrat-Medium.otf");
+        typeface = Typeface.createFromAsset(getActivity().getAssets(), "Fonts/Montserrat-Medium.otf");
         unbinder = ButterKnife.bind(this, v);
         customActionBar();
         if (alertDialog == null)
@@ -156,45 +156,41 @@ public class BusinessFragment extends Fragment {
             public void onClick(View v) {
 
 
-
-
-                if (temp_close_appoint.isChecked() == true ){
-                    temp_close = "1" ;
-                }else {
-                    temp_close = "0.00" ;
+                if (temp_close_appoint.isChecked() == true) {
+                    temp_close = "1";
+                } else {
+                    temp_close = "0.00";
                 }
 
-                if (is_travel_charged.isChecked() == true){
+                if (is_travel_charged.isChecked() == true) {
                     is_travel = "1";
-                }else {
+                } else {
                     is_travel = "0.00";
                 }
 
-                if (free_cancel.equals("At least 5 hours before appointment")){
-                    free_cancel = "5hr" ;
-                }else if (free_cancel.equals("At least 12 hours before appointment")){
-                    free_cancel = "12hr" ;
-                }
-                else if (free_cancel.equals("At least 24 hours before appointment")){
-                    free_cancel = "24hr" ;
-                }
-                else if (free_cancel.equals("At least 48 hours before appointment")){
-                    free_cancel = "48hr" ;
+                if (free_cancel.equals("At least 5 hours before appointment")) {
+                    free_cancel = "5hr";
+                } else if (free_cancel.equals("At least 12 hours before appointment")) {
+                    free_cancel = "12hr";
+                } else if (free_cancel.equals("At least 24 hours before appointment")) {
+                    free_cancel = "24hr";
+                } else if (free_cancel.equals("At least 48 hours before appointment")) {
+                    free_cancel = "48hr";
                 }
 
-                if (t_charge.equals("$10")){
-                    t_charge = "10" ;
-                }else if (t_charge.equals("$20")){
-                    t_charge = "20" ;
+                if (t_charge.equals("$10")) {
+                    t_charge = "10";
+                } else if (t_charge.equals("$20")) {
+                    t_charge = "20";
                 }
 
 
-                if (t_over.equals("$60")){
-                    t_over = "60" ;
-                }else if (t_over.equals("$80")){
-                    t_over = "80" ;
-                } else if (t_over.equals("$120")){
-                    t_over = "120" ;
+                if (t_over.equals("$60")) {
+                    t_over = "60";
+                } else if (t_over.equals("$80")) {
+                    t_over = "80";
+                } else if (t_over.equals("$120")) {
+                    t_over = "120";
                 }
                 apicallupdate();
             }
@@ -223,11 +219,11 @@ public class BusinessFragment extends Fragment {
                         bsns_id = temp.getString("bussiess_id");
                         merchant_id = temp.getString("merchant_id");
                         t_charge = temp.getString("travell_charge");
-                        t_over  = temp.getString("free_travel_over");
+                        t_over = temp.getString("free_travel_over");
                         free_cancel = temp.getString("free_cancellation");
-                         temp_close = temp.getString("temp_close_appointment");
+                        temp_close = temp.getString("temp_close_appointment");
                         is_travel = temp.getString("is_travell_charge");
-                         min_book = temp.getString("travell_charge");
+                        min_book = temp.getString("travell_charge");
 
 
                         if (temp.getString("temp_close_appointment").equals("1")) {
@@ -240,8 +236,8 @@ public class BusinessFragment extends Fragment {
 
 
                         travel_charge.setItems(t_charge, "10", "20");
-                        free_travel_over.setItems(t_over, "60" ,"80" , "120");
-                        free_cancelation.setItems(free_cancel, "At least 5 hours before appointment", "At least 12 hours before appointment" , "At least 24 hours before appointment" , "At least 48 hours before appointment");
+                        free_travel_over.setItems(t_over, "60", "80", "120");
+                        free_cancelation.setItems(free_cancel, "At least 5 hours before appointment", "At least 12 hours before appointment", "At least 24 hours before appointment", "At least 48 hours before appointment");
 
 
                     } catch (JSONException e) {
@@ -322,9 +318,6 @@ public class BusinessFragment extends Fragment {
     }
 
 
-
-
-
     private void apicallupdate() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salonpro/api/web/v1/merchant/business-setting-update"
                 , new Response.Listener<String>() {
@@ -387,12 +380,10 @@ public class BusinessFragment extends Fragment {
                 params.put("temp_close_appointment", temp_close);
                 params.put("min_book_amnt", "10p");
                 params.put("travell_charge", t_charge);
-                params.put("is_travell_charge",is_travel );
+                params.put("is_travell_charge", is_travel);
                 params.put("free_travel_over", t_over);
                 params.put("free_cancellation", free_cancel);
                 params.put("business_logo", "");
-
-
 
 
                 return params;

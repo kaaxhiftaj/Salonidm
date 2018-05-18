@@ -163,7 +163,7 @@ public class MainFragment extends Fragment {
         ImageButton logout = (ImageButton) mCustomView.findViewById(R.id.logout);
         logout.setVisibility(View.VISIBLE);
         backbutton.setVisibility(View.GONE);
-        mTitleTextView.setText("SalonIDM");
+        mTitleTextView.setText("FOR SALON PROFESSIONALS");
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
 

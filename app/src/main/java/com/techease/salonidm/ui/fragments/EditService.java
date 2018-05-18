@@ -186,7 +186,7 @@ public class EditService extends Fragment {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // onDataInput();
+//              onDataInput();
             }
         });
         return v;
@@ -199,7 +199,7 @@ public class EditService extends Fragment {
         discount = service_discount.getText().toString();
         duration = service_duration.getText().toString();
 
-        if ((desc.equals(""))) {
+        if ((name.equals(""))) {
             service_name.setError("Please enter valid name");
         } else if (desc.equals("")) {
             service_desc.setError("Please enter description");
@@ -217,15 +217,16 @@ public class EditService extends Fragment {
                 alertDialog = AlertsUtils.createProgressDialog(getActivity());
                 alertDialog.show();
             }
+
             apiCall();
         }
     }
-
 
     public void apiCall() {
         VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, "http://www.salonidm.com/salonpro/api/web/v1/merchant-salon-services/editservice", new Response.Listener<NetworkResponse>() {
             @Override
             public void onResponse(NetworkResponse response) {
+                Toast.makeText(getActivity(), response.toString(), Toast.LENGTH_SHORT).show();
                 if (alertDialog != null)
                     alertDialog.dismiss();
                 if (response.statusCode == 200) {
@@ -308,6 +309,7 @@ public class EditService extends Fragment {
                 params.put("price", price);
                 params.put("discount", discount);
                 params.put("duration", duration);
+
                 return params;
             }
 
@@ -426,6 +428,7 @@ public class EditService extends Fragment {
             @Override
             public void onClick(View v) {
                 onDataInput();
+
             }
         });
     }
