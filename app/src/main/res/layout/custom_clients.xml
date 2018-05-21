@@ -50,7 +50,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="5sp"
                     android:textColor="#000"
-                    android:src="@drawable/mail"
+                    android:src="@drawable/email"
                     android:text="Email  :"
                     android:textStyle="bold" />
 
@@ -62,6 +62,7 @@
                     android:layout_marginLeft="22dp"
                     android:layout_marginTop="5sp"
                     android:textAllCaps="true"
+                    android:textColor="#848786"
                     android:textSize="16dp" />
             </LinearLayout>
 
@@ -89,6 +90,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="5sp"
                     android:textAllCaps="true"
+                    android:textColor="#848786"
                     android:textSize="16dp" />
 
             </LinearLayout>
@@ -114,6 +116,7 @@
                     android:layout_marginBottom="5sp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5sp"
+                    android:textColor="#848786"
                     android:textSize="16dp"
                     />
             </LinearLayout>

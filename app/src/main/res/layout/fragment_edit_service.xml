@@ -82,12 +82,13 @@
                             android:paddingLeft="15dp"
                             android:textDirection="ltr"
                             android:hint="Service Name"
+                            android:text="Service Name"
+                            android:textSize="16dp"
                             android:background="@drawable/edittextshape"
                             android:enabled="false"
                             android:cursorVisible="false"
                             android:textStyle="bold"
                             android:textColor="#000"
-                            android:clickable="false"
                             />
 
                         <EditText
@@ -122,6 +123,8 @@
                             android:paddingLeft="15dp"
                             android:textDirection="ltr"
                             android:hint="Price"
+                            android:text="Price"
+                            android:textSize="16dp"
                             android:textStyle="bold"
                             android:textColor="#000"
                             android:background="@drawable/edittextshape"
@@ -164,6 +167,8 @@
                             android:paddingLeft="15dp"
                             android:textDirection="ltr"
                             android:hint="DISCOUNT"
+                            android:text="DISCOUNT"
+                            android:textSize="16dp"
                             android:textColor="#000"
                             android:background="@drawable/edittextshape"
                             android:enabled="false"

@@ -77,8 +77,8 @@ public class EditBusinessInfo extends Fragment {
     @BindView(R.id.phone)
     EditText salon_number;
 
-    @BindView(R.id.edit_info)
-    Button edit_info;
+//    @BindView(R.id.edit_info)
+//    Button edit_info;
 
     Unbinder unbinder;
     android.support.v7.app.AlertDialog alertDialog;
@@ -104,7 +104,7 @@ public class EditBusinessInfo extends Fragment {
         licensed_number.setTypeface(typeface);
         salon_name.setTypeface(typeface);
         salon_number.setTypeface(typeface);
-        edit_info.setTypeface(typeface);
+//        edit_info.setTypeface(typeface);
         city.setTypeface(typeface);
         state.setTypeface(typeface);
         website.setTypeface(typeface);
@@ -153,65 +153,65 @@ public class EditBusinessInfo extends Fragment {
             }
         });
 
-        edit_info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                if (InternetUtils.isNetworkConnected(getActivity())) {
-
-                    m_name = merchant_name.getText().toString();
-                    m_email = merchant_email.getText().toString();
-                    s_name = salon_name.getText().toString();
-                    s_website = website.getText().toString();
-                    s_address = address.getText().toString();
-                    s_city = city.getText().toString();
-                    s_salon_phone = salon_number.getText().toString();
-                    s_licensed_number = licensed_number.getText().toString();
-
-                    if ((s_state.equals("Alabama"))){
-                        s_state = "1";
-                    } else if (s_state.equals("Arizona")){
-                        s_state = "2";
-                    }else if (s_state.equals("Alaska")){
-                        s_state = "3";
-                    }else if (s_state.equals("Arkansas")){
-                        s_state = "4";
-                    }else if (s_state.equals("California")){
-                        s_state = "5";
-                    }else if (s_state.equals("Colorado")){
-                        s_state = "6";
-                    }else if (s_state.equals("Connecticut")){
-                        s_state = "7";
-                    }else if (s_state.equals("Delaware")){
-                        s_state = "8";
-                    }else if (s_state.equals("District")){
-                        s_state = "9";
-                    }else if (s_state.equals("Florida")){
-                        s_state = "10";
-                    }
-
-                    if((s_service.equals("I'm Mobile"))){
-                        s_service = "1";
-                    }
-                    else if(s_service.equals("I'm at the Salon")){
-                        s_service = "2";
-                    }
-                    else if(s_service.equals("Mobile and At Salon")){
-                        s_service = "3";
-                    }
-
-                    apicall();
-                    if (alertDialog == null)
-                        alertDialog = AlertsUtils.createProgressDialog(getActivity());
-                    alertDialog.show();
-
-
-                } else {
-                    Toast.makeText(getActivity(), "No Internet Connection", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+//        edit_info.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+//                if (InternetUtils.isNetworkConnected(getActivity())) {
+//
+//                    m_name = merchant_name.getText().toString();
+//                    m_email = merchant_email.getText().toString();
+//                    s_name = salon_name.getText().toString();
+//                    s_website = website.getText().toString();
+//                    s_address = address.getText().toString();
+//                    s_city = city.getText().toString();
+//                    s_salon_phone = salon_number.getText().toString();
+//                    s_licensed_number = licensed_number.getText().toString();
+//
+//                    if ((s_state.equals("Alabama"))){
+//                        s_state = "1";
+//                    } else if (s_state.equals("Arizona")){
+//                        s_state = "2";
+//                    }else if (s_state.equals("Alaska")){
+//                        s_state = "3";
+//                    }else if (s_state.equals("Arkansas")){
+//                        s_state = "4";
+//                    }else if (s_state.equals("California")){
+//                        s_state = "5";
+//                    }else if (s_state.equals("Colorado")){
+//                        s_state = "6";
+//                    }else if (s_state.equals("Connecticut")){
+//                        s_state = "7";
+//                    }else if (s_state.equals("Delaware")){
+//                        s_state = "8";
+//                    }else if (s_state.equals("District")){
+//                        s_state = "9";
+//                    }else if (s_state.equals("Florida")){
+//                        s_state = "10";
+//                    }
+//
+//                    if((s_service.equals("I'm Mobile"))){
+//                        s_service = "1";
+//                    }
+//                    else if(s_service.equals("I'm at the Salon")){
+//                        s_service = "2";
+//                    }
+//                    else if(s_service.equals("Mobile and At Salon")){
+//                        s_service = "3";
+//                    }
+//
+//                    apicall();
+//                    if (alertDialog == null)
+//                        alertDialog = AlertsUtils.createProgressDialog(getActivity());
+//                    alertDialog.show();
+//
+//
+//                } else {
+//                    Toast.makeText(getActivity(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
 
 
         return v;
@@ -298,6 +298,8 @@ public class EditBusinessInfo extends Fragment {
         TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
         mTitleTextView.setTypeface(typeface);
         ImageView backbutton = (ImageView) mCustomView.findViewById(R.id.back);
+        TextView Save = mCustomView.findViewById(R.id.tvSave);
+        Save.setVisibility(View.VISIBLE);
         mTitleTextView.setText("Edit Business Information");
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
@@ -308,6 +310,63 @@ public class EditBusinessInfo extends Fragment {
                 mActionBar.setDisplayShowCustomEnabled(false);
                 android.app.Fragment fragment = new MainFragment();
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+            }
+        });
+        Save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (InternetUtils.isNetworkConnected(getActivity())) {
+
+                    m_name = merchant_name.getText().toString();
+                    m_email = merchant_email.getText().toString();
+                    s_name = salon_name.getText().toString();
+                    s_website = website.getText().toString();
+                    s_address = address.getText().toString();
+                    s_city = city.getText().toString();
+                    s_salon_phone = salon_number.getText().toString();
+                    s_licensed_number = licensed_number.getText().toString();
+
+                    if ((s_state.equals("Alabama"))){
+                        s_state = "1";
+                    } else if (s_state.equals("Arizona")){
+                        s_state = "2";
+                    }else if (s_state.equals("Alaska")){
+                        s_state = "3";
+                    }else if (s_state.equals("Arkansas")){
+                        s_state = "4";
+                    }else if (s_state.equals("California")){
+                        s_state = "5";
+                    }else if (s_state.equals("Colorado")){
+                        s_state = "6";
+                    }else if (s_state.equals("Connecticut")){
+                        s_state = "7";
+                    }else if (s_state.equals("Delaware")){
+                        s_state = "8";
+                    }else if (s_state.equals("District")){
+                        s_state = "9";
+                    }else if (s_state.equals("Florida")){
+                        s_state = "10";
+                    }
+
+                    if((s_service.equals("I'm Mobile"))){
+                        s_service = "1";
+                    }
+                    else if(s_service.equals("I'm at the Salon")){
+                        s_service = "2";
+                    }
+                    else if(s_service.equals("Mobile and At Salon")){
+                        s_service = "3";
+                    }
+
+                    apicall();
+                    if (alertDialog == null)
+                        alertDialog = AlertsUtils.createProgressDialog(getActivity());
+                    alertDialog.show();
+
+
+                } else {
+                    Toast.makeText(getActivity(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

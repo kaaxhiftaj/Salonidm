@@ -1,142 +1,367 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="0dp"
     android:orientation="vertical"
-    android:layout_margin="30dp"
     tools:context="com.techease.salonidm.ui.fragments.EditBusinessInfo">
 
 
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:textStyle="bold"
-            android:paddingLeft="15dp"
-            android:hint="@string/merchant_name"
-            android:id="@+id/merchant_name"
-            />
-
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:textSize="15dp"
-            android:paddingLeft="15dp"
-            android:textStyle="bold"
-            android:layout_marginTop="5dp"
-            android:hint="@string/merchant_email"
-            android:foregroundGravity="right"
-            android:id="@+id/merchant_email"
-            />
-
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:textStyle="bold"
-            android:layout_marginTop="5dp"
-            android:paddingLeft="15dp"
-            android:hint="@string/salon_name"
-            android:id="@+id/salon_name"
-            />
-
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:textStyle="bold"
-            android:paddingLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:hint="@string/phone"
-            android:id="@+id/phone"
-            />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:textStyle="bold"
-            android:paddingLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:hint="@string/website"
-            android:id="@+id/website"
-            />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:textStyle="bold"
-            android:paddingLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:hint="@string/address"
-            android:id="@+id/address"
-            />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:textStyle="bold"
-            android:paddingLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:hint="@string/city"
-            android:id="@+id/city"
-            />
-
-        <com.jaredrummler.materialspinner.MaterialSpinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:paddingLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:textStyle="bold"
-            android:hint="@string/state"
-            android:id="@+id/state"
-            />
-
-        <com.jaredrummler.materialspinner.MaterialSpinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:paddingLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:textStyle="bold"
-            android:hint="service_type"
-            android:id="@+id/servicesType"
-            />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:textStyle="bold"
-            android:paddingLeft="15dp"
-            android:visibility="gone"
-            android:layout_marginTop="5dp"
-            android:hint="@string/licensed_number"
-            android:id="@+id/licensed_number"
-            />
-
-
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:text="@string/save"
-        android:textColor="#FFF"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:id="@+id/edit_info"
-        />
+        android:layout_marginBottom="10sp"
+        android:layout_marginTop="10sp"
+        android:paddingLeft="15sp"
+        android:paddingRight="10sp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:text="Business Name"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/merchant_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittextshape"
+            android:hint="@string/merchant_name"
+            android:gravity="right"
+            android:textSize="15dp"
+            android:visibility="gone"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/salon_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="@string/salon_name"
+            android:paddingLeft="15dp"
+            android:textSize="15dp"
+            android:background="@drawable/edittextshape"
+            android:gravity="right"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2e2e1f" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
+        android:layout_marginTop="10sp"
+        android:paddingLeft="15sp"
+        android:paddingRight="10sp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:text="PHONE NUMBER"
+            android:textColor="#000"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:hint="@string/phone"
+            android:paddingLeft="15dp"
+            android:textSize="15dp"
+            android:background="@drawable/edittextshape"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2e2e1f" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
+        android:layout_marginTop="10sp"
+        android:paddingLeft="15sp"
+        android:paddingRight="10sp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:text="WEBSITE"
+            android:textColor="#000"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/website"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:hint="@string/website"
+        android:background="@drawable/edittextshape"
+        android:gravity="right"
+        android:paddingLeft="15dp"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2e2e1f" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="12sp"
+        android:background="#f3f3f3"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:text="BUSINESS LOCATION"
+            android:textColor="#000"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2e2e1f" />
+
+
+
+    <!--<EditText-->
+        <!--android:id="@+id/salon_name"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:hint="@string/salon_name"-->
+        <!--android:paddingLeft="15dp"-->
+        <!--android:textSize="15dp"-->
+        <!--android:textStyle="bold" />-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
+        android:paddingLeft="15sp"
+        android:paddingRight="10sp"
+        android:layout_marginTop="10sp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:text="Email"
+            android:textColor="#000"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+    <EditText
+        android:id="@+id/merchant_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:hint="@string/merchant_email"
+        android:gravity="right"
+        android:paddingLeft="15dp"
+        android:background="@drawable/edittextshape"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2e2e1f" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
+        android:paddingLeft="15sp"
+        android:paddingRight="10sp"
+        android:layout_marginTop="10sp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:text="ADDRESS"
+            android:textColor="#000"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:hint="@string/address"
+        android:paddingLeft="15dp"
+        android:background="@drawable/edittextshape"
+        android:gravity="right"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2e2e1f" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
+        android:paddingLeft="15sp"
+        android:paddingRight="10sp"
+        android:layout_marginTop="10sp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:text="CITY"
+            android:textColor="#000"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+    <EditText
+        android:id="@+id/city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:hint="@string/city"
+        android:paddingLeft="15dp"
+        android:textSize="15dp"
+        android:background="@drawable/edittextshape"
+        android:gravity="right"
+        android:textStyle="bold" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2e2e1f" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
+        android:paddingLeft="15sp"
+        android:paddingRight="10sp"
+        android:layout_marginTop="10sp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:gravity="left"
+            android:text="ZIP"
+            android:textColor="#000"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/licensed_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="@string/licensed_number"
+            android:background="@drawable/edittextshape"
+            android:gravity="right"
+            android:paddingLeft="15dp"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2e2e1f" />
+    <com.jaredrummler.materialspinner.MaterialSpinner
+        android:id="@+id/state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:hint="@string/state"
+        android:paddingLeft="15dp"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2e2e1f" />
+
+    <com.jaredrummler.materialspinner.MaterialSpinner
+        android:id="@+id/servicesType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:hint="service_type"
+        android:paddingLeft="10dp"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2e2e1f" />
+
+
+    <!--<Button-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/colorPrimary"-->
+    <!--android:layout_marginTop="30dp"-->
+    <!--android:layout_marginLeft="50dp"-->
+    <!--android:layout_marginRight="50dp"-->
+    <!--android:text="@string/save"-->
+    <!--android:textColor="#FFF"-->
+    <!--android:textStyle="bold"-->
+    <!--android:textSize="20dp"-->
+    <!--android:id="@+id/edit_info"-->
+    <!--/>-->
 
 </LinearLayout>

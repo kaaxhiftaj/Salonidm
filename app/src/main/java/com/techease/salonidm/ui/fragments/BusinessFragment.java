@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,8 @@ import butterknife.Unbinder;
 
 public class BusinessFragment extends Fragment {
 
-
+    @BindView(R.id.et_minAmount)
+    EditText et_minAmount;
     @BindView(R.id.travel_charge)
     MaterialSpinner travel_charge;
 
@@ -64,21 +66,22 @@ public class BusinessFragment extends Fragment {
     Switch temp_close_appoint;
 
     @BindView(R.id.min_book_appoint)
-    Switch min_book_appoint;
+    // Switch min_book_appoint;
+            MaterialSpinner min_book_appoint;
 
     @BindView(R.id.is_travel_charged)
     Switch is_travel_charged;
 
-
-    @BindView(R.id.save)
-    Button save;
+//
+//    @BindView(R.id.save)
+//    Button save;
 
     Unbinder unbinder;
     android.support.v7.app.AlertDialog alertDialog;
     SharedPreferences sharedPreferences;
     Typeface typeface;
     SharedPreferences.Editor editor;
-    String token, bsns_id, merchant_id, temp_close, is_travel, min_book, t_charge, t_over, free_cancel;
+    String token, bsns_id, merchant_id, temp_close, is_travel, min_book, t_charge, t_over, free_cancel, min_book_amount,et_min;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -99,7 +102,7 @@ public class BusinessFragment extends Fragment {
         editor = sharedPreferences.edit();
         token = sharedPreferences.getString("token", "");
 
-        save.setTypeface(typeface);
+//        save.setTypeface(typeface);
         free_cancelation.setTypeface(typeface);
         free_travel_over.setTypeface(typeface);
         temp_close_appoint.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -110,9 +113,17 @@ public class BusinessFragment extends Fragment {
             }
         });
 
-        min_book_appoint.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Toast.makeText(getActivity(), String.valueOf(isChecked), Toast.LENGTH_SHORT).show();
+//        min_book_appoint.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                Toast.makeText(getActivity(), String.valueOf(isChecked), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
+        min_book_appoint.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+                min_book_amount = (String) item;
+
             }
         });
 
@@ -150,53 +161,6 @@ public class BusinessFragment extends Fragment {
             }
         });
 
-
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                if (temp_close_appoint.isChecked() == true) {
-                    temp_close = "1";
-                } else {
-                    temp_close = "0.00";
-                }
-
-                if (is_travel_charged.isChecked() == true) {
-                    is_travel = "1";
-                } else {
-                    is_travel = "0.00";
-                }
-
-                if (free_cancel.equals("At least 5 hours before appointment")) {
-                    free_cancel = "5hr";
-                } else if (free_cancel.equals("At least 12 hours before appointment")) {
-                    free_cancel = "12hr";
-                } else if (free_cancel.equals("At least 24 hours before appointment")) {
-                    free_cancel = "24hr";
-                } else if (free_cancel.equals("At least 48 hours before appointment")) {
-                    free_cancel = "48hr";
-                }
-
-                if (t_charge.equals("$10")) {
-                    t_charge = "10";
-                } else if (t_charge.equals("$20")) {
-                    t_charge = "20";
-                }
-
-
-                if (t_over.equals("$60")) {
-                    t_over = "60";
-                } else if (t_over.equals("$80")) {
-                    t_over = "80";
-                } else if (t_over.equals("$120")) {
-                    t_over = "120";
-                }
-                apicallupdate();
-            }
-        });
-
-
         return v;
     }
 
@@ -209,8 +173,7 @@ public class BusinessFragment extends Fragment {
                 if (response.contains("200")) {
                     if (alertDialog != null)
                         alertDialog.dismiss();
-
-
+                    Log.d("show",response);
                     JSONObject jsonObject = null;
                     try {
                         jsonObject = new JSONObject(response);
@@ -234,7 +197,7 @@ public class BusinessFragment extends Fragment {
                             is_travel_charged.setChecked(true);
                         }
 
-
+                        min_book_appoint.setItems("null", "p", "f");
                         travel_charge.setItems(t_charge, "10", "20");
                         free_travel_over.setItems(t_over, "60", "80", "120");
                         free_cancelation.setItems(free_cancel, "At least 5 hours before appointment", "At least 12 hours before appointment", "At least 24 hours before appointment", "At least 48 hours before appointment");
@@ -304,6 +267,8 @@ public class BusinessFragment extends Fragment {
         mTitleTextView.setTypeface(typeface);
         ImageView backbutton = (ImageView) mCustomView.findViewById(R.id.back);
         mTitleTextView.setText("Business Settings");
+        TextView Save = mCustomView.findViewById(R.id.tvSave);
+        Save.setVisibility(View.VISIBLE);
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
         backbutton.setOnClickListener(new View.OnClickListener() {
@@ -313,6 +278,64 @@ public class BusinessFragment extends Fragment {
                 mActionBar.setDisplayShowCustomEnabled(false);
                 android.app.Fragment fragment = new MainFragment();
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+            }
+        });
+
+        Save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                et_min = et_minAmount.getText().toString();
+                if (temp_close_appoint.isChecked() == true) {
+                    temp_close = "1";
+                } else {
+                    temp_close = "0.00";
+                }
+
+                if (is_travel_charged.isChecked() == true) {
+                    is_travel = "1";
+                } else {
+                    is_travel = "0.00";
+                }
+
+
+                if (min_book_amount.equals("f")) {
+                    min_book_amount = et_min +"f";
+                    Toast.makeText(getActivity(), "f", Toast.LENGTH_SHORT).show();
+                } else if (min_book_amount.equals("p")) {
+                    min_book_amount = et_min+"p";
+                    Toast.makeText(getActivity(), "f", Toast.LENGTH_SHORT).show();
+                }
+
+                Log.d("abdul",min_book_amount);
+
+
+                if (free_cancel.equals("At least 5 hours before appointment")) {
+                    free_cancel = "5hr";
+                } else if (free_cancel.equals("At least 12 hours before appointment")) {
+                    free_cancel = "12hr";
+                } else if (free_cancel.equals("At least 24 hours before appointment")) {
+                    free_cancel = "24hr";
+                } else if (free_cancel.equals("At least 48 hours before appointment")) {
+                    free_cancel = "48hr";
+                }
+
+                Log.d("min", free_cancel);
+
+                if (t_charge.equals("$10")) {
+                    t_charge = "10";
+                } else if (t_charge.equals("$20")) {
+                    t_charge = "20";
+                }
+
+
+                if (t_over.equals("$60")) {
+                    t_over = "60";
+                } else if (t_over.equals("$80")) {
+                    t_over = "80";
+                } else if (t_over.equals("$120")) {
+                    t_over = "120";
+                }
+                apicallupdate();
             }
         });
     }
@@ -378,7 +401,7 @@ public class BusinessFragment extends Fragment {
                 Map<String, String> params = new HashMap<>();
                 params.put("vAuthToken", token);
                 params.put("temp_close_appointment", temp_close);
-                params.put("min_book_amnt", "10p");
+                params.put("min_book_amnt", min_book_amount);
                 params.put("travell_charge", t_charge);
                 params.put("is_travell_charge", is_travel);
                 params.put("free_travel_over", t_over);
