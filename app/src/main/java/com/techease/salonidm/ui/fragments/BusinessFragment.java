@@ -81,7 +81,7 @@ public class BusinessFragment extends Fragment {
     SharedPreferences sharedPreferences;
     Typeface typeface;
     SharedPreferences.Editor editor;
-    String token, bsns_id, merchant_id, temp_close, is_travel, min_book, t_charge, t_over, free_cancel, min_book_amount,et_min;
+    String token, bsns_id, merchant_id, temp_close, is_travel, min_book, t_charge, t_over, free_cancel, min_book_amount,str_minAmount;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -186,8 +186,9 @@ public class BusinessFragment extends Fragment {
                         free_cancel = temp.getString("free_cancellation");
                         temp_close = temp.getString("temp_close_appointment");
                         is_travel = temp.getString("is_travell_charge");
-                        min_book = temp.getString("travell_charge");
+                        min_book = temp.getString("min_book_amnt");
 
+                        et_minAmount.setText(min_book);
 
                         if (temp.getString("temp_close_appointment").equals("1")) {
                             temp_close_appoint.setChecked(true);
@@ -284,7 +285,7 @@ public class BusinessFragment extends Fragment {
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                et_min = et_minAmount.getText().toString();
+                str_minAmount = et_minAmount.getText().toString();
                 if (temp_close_appoint.isChecked() == true) {
                     temp_close = "1";
                 } else {
@@ -299,14 +300,12 @@ public class BusinessFragment extends Fragment {
 
 
                 if (min_book_amount.equals("f")) {
-                    min_book_amount = et_min +"f";
+                    min_book_amount = str_minAmount +"f";
                     Toast.makeText(getActivity(), "f", Toast.LENGTH_SHORT).show();
                 } else if (min_book_amount.equals("p")) {
-                    min_book_amount = et_min+"p";
-                    Toast.makeText(getActivity(), "f", Toast.LENGTH_SHORT).show();
+                    min_book_amount = str_minAmount+"p";
+                    Toast.makeText(getActivity(), "p", Toast.LENGTH_SHORT).show();
                 }
-
-                Log.d("abdul",min_book_amount);
 
 
                 if (free_cancel.equals("At least 5 hours before appointment")) {

@@ -87,6 +87,7 @@
                 android:id="@+id/et_minAmount"
                 android:layout_width="60sp"
                 android:layout_marginLeft="25sp"
+                android:gravity="center"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/minAmnt"/>
 
