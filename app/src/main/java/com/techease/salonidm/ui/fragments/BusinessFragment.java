@@ -70,10 +70,6 @@ public class BusinessFragment extends Fragment {
     @BindView(R.id.is_travel_charged)
     Switch is_travel_charged;
 
-//
-//    @BindView(R.id.save)
-//    Button save;
-
     Unbinder unbinder;
     android.support.v7.app.AlertDialog alertDialog;
     SharedPreferences sharedPreferences;
