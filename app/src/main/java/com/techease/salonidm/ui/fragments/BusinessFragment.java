@@ -51,8 +51,6 @@ import butterknife.Unbinder;
 
 public class BusinessFragment extends Fragment {
 
-    @BindView(R.id.et_minAmount)
-    EditText et_minAmount;
     @BindView(R.id.travel_charge)
     MaterialSpinner travel_charge;
 
@@ -81,7 +79,7 @@ public class BusinessFragment extends Fragment {
     SharedPreferences sharedPreferences;
     Typeface typeface;
     SharedPreferences.Editor editor;
-    String token, bsns_id, merchant_id, temp_close, is_travel, min_book, t_charge, t_over, free_cancel, min_book_amount,str_minAmount;
+    String token, bsns_id, merchant_id, temp_close, is_travel, min_book, t_charge, t_over, free_cancel, min_book_amount;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -186,9 +184,8 @@ public class BusinessFragment extends Fragment {
                         free_cancel = temp.getString("free_cancellation");
                         temp_close = temp.getString("temp_close_appointment");
                         is_travel = temp.getString("is_travell_charge");
-                        min_book = temp.getString("min_book_amnt");
+                        min_book_amount = temp.getString("min_book_amnt");
 
-                        et_minAmount.setText(min_book);
 
                         if (temp.getString("temp_close_appointment").equals("1")) {
                             temp_close_appoint.setChecked(true);
@@ -198,7 +195,7 @@ public class BusinessFragment extends Fragment {
                             is_travel_charged.setChecked(true);
                         }
 
-                        min_book_appoint.setItems("null", "p", "f");
+                        min_book_appoint.setItems(min_book_amount,"No Deposit Required", "10% of total", "20% of total","$10 Flat Rate","$20 Flat Rate");
                         travel_charge.setItems(t_charge, "10", "20");
                         free_travel_over.setItems(t_over, "60", "80", "120");
                         free_cancelation.setItems(free_cancel, "At least 5 hours before appointment", "At least 12 hours before appointment", "At least 24 hours before appointment", "At least 48 hours before appointment");
@@ -285,7 +282,7 @@ public class BusinessFragment extends Fragment {
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                str_minAmount = et_minAmount.getText().toString();
+
                 if (temp_close_appoint.isChecked() == true) {
                     temp_close = "1";
                 } else {
@@ -298,15 +295,19 @@ public class BusinessFragment extends Fragment {
                     is_travel = "0.00";
                 }
 
-
-                if (min_book_amount.equals("f")) {
-                    min_book_amount = str_minAmount +"f";
-                    Toast.makeText(getActivity(), "f", Toast.LENGTH_SHORT).show();
-                } else if (min_book_amount.equals("p")) {
-                    min_book_amount = str_minAmount+"p";
-                    Toast.makeText(getActivity(), "p", Toast.LENGTH_SHORT).show();
+                if (min_book_amount.equals("No Deposit Required")) {
+                    min_book_amount = "0";
+                } else if (min_book_amount.equals("10% of total")) {
+                    min_book_amount = "10p";
+                }else if (min_book_amount.equals("20% of total")) {
+                    min_book_amount = "20p";
                 }
-
+                else if (min_book_amount.equals("$10 Flat Rate")) {
+                    min_book_amount = "10f";
+                }
+                else if (min_book_amount.equals("$20 Flat Rate")) {
+                    min_book_amount = "20f";
+                }
 
                 if (free_cancel.equals("At least 5 hours before appointment")) {
                     free_cancel = "5hr";
