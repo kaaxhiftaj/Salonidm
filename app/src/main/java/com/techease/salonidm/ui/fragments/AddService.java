@@ -143,7 +143,8 @@ public class AddService extends Fragment {
         });
 
         service_duration.setItems("Service Duration", "15 min", "30 min", "45 min", "1 hr", "1 hr 15 min", "1 hr 30 min", "1 hr 45 min", " 2 hr",
-                "2 hr 15 min", " 2 hr 30 min", " 2 hr 45 min", " 3 hr");
+                "2 hr 15 min", " 2 hr 30 min", " 2 hr 45 min", " 3 hr" , " 3 hr 30 min", " 4 hr " , " 4 hr 30 min",  " 5 hr 30 min" , " 5 hr 30 min",
+                " 7hr" , " 7 hr 30 min" ,  " 8 hr 30 min" , " 9 hr" ,  " 10 hr 30 min");
 
         service_duration.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
