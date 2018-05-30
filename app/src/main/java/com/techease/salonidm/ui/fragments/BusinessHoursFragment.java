@@ -164,8 +164,10 @@ public class BusinessHoursFragment extends Fragment {
                         if (alertDialog != null)
                             alertDialog.dismiss();
                         JSONObject jsonObject = new JSONObject(response);
-                        JSONArray jsonArr = jsonObject.getJSONArray("data");
-                        JSONObject temp = jsonArr.getJSONObject(0);
+                        JSONObject jsonObject_all = jsonObject.getJSONObject("data");
+
+                        //for monday
+                        JSONObject temp = jsonObject_all.getJSONObject("monday");
 
                         String start_time = temp.getString("start_time_monday");
                         String end_time = temp.getString("end_time_monday");
@@ -174,8 +176,9 @@ public class BusinessHoursFragment extends Fragment {
                         String break_start_time = temp.getString("break_start_time_monday");
                         String break_end_time = temp.getString("break_end_time_monday");
 
-                        to.setText(start_time);
-                        from.setText(end_time);
+
+                        to.setText(end_time);
+                        from.setText(start_time);
 
                         if (check_day.contains("0")) {
                             swich.setChecked(false);
@@ -189,7 +192,7 @@ public class BusinessHoursFragment extends Fragment {
 //                        }
 
                         //for tuesday
-                        JSONObject temp_tue = jsonArr.getJSONObject(1);
+                        JSONObject temp_tue = jsonObject_all.getJSONObject("tuesday");
 
                         String start_time_tue = temp_tue.getString("start_time_tuesday");
                         String end_time_tue = temp_tue.getString("end_time_tuesday");
@@ -214,7 +217,7 @@ public class BusinessHoursFragment extends Fragment {
                         //end
 
                         //for wednesday
-                        JSONObject temp_wed = jsonArr.getJSONObject(2);
+                        JSONObject temp_wed = jsonObject_all.getJSONObject("wednesday");
 
                         String start_time_wed = temp_wed.getString("start_time_wednesday");
                         String end_time_wed = temp_wed.getString("end_time_wednesday");
@@ -239,7 +242,7 @@ public class BusinessHoursFragment extends Fragment {
                         //end
 
                         //for thursday
-                        JSONObject temp_thur = jsonArr.getJSONObject(3);
+                        JSONObject temp_thur = jsonObject_all.getJSONObject("thursday");
 
                         String start_time_thur = temp_thur.getString("start_time_thursday");
                         String end_time_thur = temp_thur.getString("end_time_thursday");
@@ -264,7 +267,7 @@ public class BusinessHoursFragment extends Fragment {
                         //end
 
                         //for friday
-                        JSONObject temp_fri = jsonArr.getJSONObject(4);
+                        JSONObject temp_fri = jsonObject_all.getJSONObject("friday");
 
                         String start_time_fri = temp_fri.getString("start_time_friday");
                         String end_time_fri = temp_fri.getString("end_time_friday");
@@ -289,7 +292,7 @@ public class BusinessHoursFragment extends Fragment {
                         //end
 
                         //for saturday
-                        JSONObject temp_sat = jsonArr.getJSONObject(5);
+                        JSONObject temp_sat = jsonObject_all.getJSONObject("saturday");
 
                         String start_time_sat = temp_sat.getString("start_time_saturday");
                         String end_time_sat = temp_sat.getString("end_time_saturday");
@@ -301,8 +304,8 @@ public class BusinessHoursFragment extends Fragment {
                         to_sat.setText(start_time_sat);
                         from_sat.setText(start_time_sat);
                         if (check_day_sat.contains("0")) {
-                            swich_fri.setChecked(false);
-                            layout_checkHour_fri.setVisibility(View.GONE);
+                            swich_sat.setChecked(false);
+                            layout_checkHour_sat.setVisibility(View.GONE);
                             layout_break_sat.setVisibility(View.GONE);
                         }
 //                        if (break_day_sat.contains("0")) {
@@ -313,7 +316,7 @@ public class BusinessHoursFragment extends Fragment {
                         //end
 
                         //for sunday
-                        JSONObject temp_sun = jsonArr.getJSONObject(6);
+                        JSONObject temp_sun = jsonObject_all.getJSONObject("sunday");
 
                         String start_time_sun = temp_sun.getString("start_time_sunday");
                         String end_time_sun = temp_sun.getString("end_time_sunday");
@@ -325,8 +328,8 @@ public class BusinessHoursFragment extends Fragment {
                         from_sun.setText(start_time_sun);
                         to_sun.setText(end_time_sun);
                         if (check_day_sun.contains("0")) {
-                            swich_fri.setChecked(false);
-                            layout_checkHour_fri.setVisibility(View.GONE);
+                            swich_sun.setChecked(false);
+                            layout_checkHour_sun.setVisibility(View.GONE);
                             layout_break_sun.setVisibility(View.GONE);
                         }
 //                        if (break_day_sun.contains("0")) {
