@@ -8,11 +8,6 @@
     tools:context="com.techease.salonidm.ui.fragments.BusinessHoursFragment">
 
 
-    <!--<android.support.v7.widget.RecyclerView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:id="@+id/rv_bsnshours"-->
-    <!--&gt;</android.support.v7.widget.RecyclerView>-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -26,7 +21,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5sp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -81,7 +77,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-
+                        android:padding="5sp"
                         android:weightSum="2">
 
                         <LinearLayout
@@ -158,10 +154,12 @@
                         android:id="@+id/break_mon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="0dp"
                         android:text="@string/brakr"
                         android:textColor="@color/colorPrimary"
                         android:textSize="16dp"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="5sp"
+                        android:layout_marginRight="10sp"
                         android:layout_gravity="center"
                         android:textStyle="bold" />
 
@@ -174,40 +172,92 @@
                         android:id="@+id/check_break"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
                         android:orientation="horizontal"
-                        android:weightSum="1">
+                        android:padding="5sp"
+                        android:weightSum="2">
 
-                        <TextView
-                            android:id="@+id/start_break_mon"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:textSize="18dp" />
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:text="Break"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/start_break_mon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_weight="1"
+                                android:text="@string/time"
+                                android:textSize="18dp" />
+
+
+                        </LinearLayout>
 
                         <View
                             android:layout_width="0.5dp"
                             android:layout_height="40dp"
-                            android:background="@color/colorPrimary"/>
+                            android:background="@color/colorPrimary"></View>
 
-
-                        <TextView
-                            android:id="@+id/end_break_mon"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:textSize="18dp" />
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:text="@string/to"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/end_break_mon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_weight="1"
+                                android:text="@string/time"
+                                android:textSize="18dp" />
+
+
+                        </LinearLayout>
 
                     </LinearLayout>
-
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
                         android:background="@color/colorPrimary" />
 
-
+                    <TextView
+                        android:id="@+id/remove_break_mon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:text="@string/remove"
+                        android:textColor="#b30000"
+                        android:padding="5sp"
+                        android:textSize="16dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
             </android.support.v7.widget.CardView>
@@ -217,7 +267,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10sp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -272,7 +323,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-
+                        android:padding="5sp"
                         android:weightSum="2">
 
                         <LinearLayout
@@ -353,6 +404,9 @@
                         android:text="@string/brakr"
                         android:textColor="@color/colorPrimary"
                         android:textSize="16dp"
+                        android:layout_marginRight="10sp"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="5sp"
                         android:layout_gravity="center"
                         android:textStyle="bold" />
 
@@ -365,36 +419,92 @@
                         android:id="@+id/check_break_tue"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
                         android:orientation="horizontal"
-                        android:weightSum="1">
+                        android:padding="5sp"
+                        android:weightSum="2">
 
-
-                        <TextView
-                            android:id="@+id/start_break_tue"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:textSize="18dp" />
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:text="Break"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/start_break_tue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_weight="1"
+                                android:text="@string/time"
+                                android:textSize="18dp" />
+
+
+                        </LinearLayout>
 
                         <View
                             android:layout_width="0.5dp"
                             android:layout_height="40dp"
-                            android:background="@color/colorPrimary"/>
+                            android:background="@color/colorPrimary"></View>
 
-                        <TextView
-                            android:id="@+id/end_break_tue"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:textSize="18dp" />
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:text="@string/to"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/end_break_tue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_weight="1"
+                                android:text="@string/time"
+                                android:textSize="18dp" />
+
+
+                        </LinearLayout>
 
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
                         android:background="@color/colorPrimary" />
+
+                    <TextView
+                        android:id="@+id/remove_break_tue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:text="@string/remove"
+                        android:textColor="#b30000"
+                        android:padding="5sp"
+                        android:textSize="16dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -402,7 +512,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10sp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -457,7 +568,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-
+                        android:padding="5sp"
                         android:weightSum="2">
 
                         <LinearLayout
@@ -537,43 +648,133 @@
                         android:text="@string/brakr"
                         android:textColor="@color/colorPrimary"
                         android:textSize="16dp"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="5sp"
                         android:layout_gravity="center"
+                        android:layout_marginRight="10sp"
                         android:textStyle="bold" />
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
                         android:background="@color/colorPrimary" />
+                    <!--<LinearLayout-->
+                        <!--android:id="@+id/check_break_wed"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:gravity="center"-->
+                        <!--android:orientation="horizontal"-->
+                        <!--android:weightSum="1">-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/start_break_wed"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginLeft="15dp"-->
+                            <!--android:layout_marginRight="15dp"-->
+                            <!--android:textSize="20dp" />-->
+                        <!--<View-->
+                            <!--android:layout_width="0.5dp"-->
+                            <!--android:layout_height="40dp"-->
+                            <!--android:background="@color/colorPrimary"/>-->
+                        <!--<TextView-->
+                            <!--android:id="@+id/end_break_wed"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginLeft="15dp"-->
+                            <!--android:layout_marginRight="15dp"-->
+                            <!--android:textSize="20dp" />-->
+
+                    <!--</LinearLayout>-->
+
                     <LinearLayout
                         android:id="@+id/check_break_wed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
                         android:orientation="horizontal"
-                        android:weightSum="1">
+                        android:padding="5sp"
+                        android:weightSum="2">
 
-                        <TextView
-                            android:id="@+id/start_break_wed"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:textSize="20dp" />
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:text="Break"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/start_break_wed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_weight="1"
+                                android:text="@string/time"
+                                android:textSize="18dp" />
+
+
+                        </LinearLayout>
+
                         <View
                             android:layout_width="0.5dp"
                             android:layout_height="40dp"
-                            android:background="@color/colorPrimary"/>
-                        <TextView
-                            android:id="@+id/end_break_wed"
-                            android:layout_width="wrap_content"
+                            android:background="@color/colorPrimary"></View>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:textSize="20dp" />
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:text="@string/to"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/end_break_wed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_weight="1"
+                                android:text="@string/time"
+                                android:textSize="18dp" />
+
+
+                        </LinearLayout>
 
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
                         android:background="@color/colorPrimary" />
+                    <TextView
+                        android:id="@+id/remove_break_wed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:text="@string/remove"
+                        android:textColor="#b30000"
+                        android:padding="5sp"
+                        android:textSize="16dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -582,7 +783,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10sp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -637,7 +839,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-
+                        android:padding="5sp"
                         android:weightSum="2">
 
                         <LinearLayout
@@ -715,8 +917,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:text="@string/brakr"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="5sp"
                         android:textColor="@color/colorPrimary"
                         android:textSize="16dp"
+                        android:layout_marginRight="10sp"
                         android:layout_gravity="center"
                         android:textStyle="bold" />
 
@@ -724,38 +929,123 @@
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
                         android:background="@color/colorPrimary" />
+                    <!--<LinearLayout-->
+                        <!--android:id="@+id/check_break_thur"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:gravity="center"-->
+                        <!--android:orientation="horizontal"-->
+                        <!--android:weightSum="1">-->
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/start_break_thur"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginLeft="15dp"-->
+                            <!--android:textSize="20dp" />-->
+
+                        <!--<View-->
+                            <!--android:layout_width="0.5dp"-->
+                            <!--android:layout_height="40dp"-->
+                            <!--android:background="@color/colorPrimary"/>-->
+                        <!--<TextView-->
+                            <!--android:id="@+id/end_break_thur"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginLeft="15dp"-->
+                            <!--android:textSize="20dp" />-->
+
+                    <!--</LinearLayout>-->
                     <LinearLayout
                         android:id="@+id/check_break_thur"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
                         android:orientation="horizontal"
-                        android:weightSum="1">
+                        android:padding="5sp"
+                        android:weightSum="2">
 
-                        <TextView
-                            android:id="@+id/start_break_thur"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:textSize="20dp" />
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:text="Break"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/start_break_thur"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_weight="1"
+                                android:text="@string/time"
+                                android:textSize="18dp" />
+
+
+                        </LinearLayout>
 
                         <View
                             android:layout_width="0.5dp"
                             android:layout_height="40dp"
-                            android:background="@color/colorPrimary"/>
-                        <TextView
-                            android:id="@+id/end_break_thur"
-                            android:layout_width="wrap_content"
+                            android:background="@color/colorPrimary"></View>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:textSize="20dp" />
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:text="@string/to"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/end_break_thur"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_weight="1"
+                                android:text="@string/time"
+                                android:textSize="18dp" />
+
+
+                        </LinearLayout>
 
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@color/colorPrimary" />
+                        android:background="@color/colorPrimary"/>
+                    <TextView
+                        android:id="@+id/remove_break_thur"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:text="@string/remove"
+                        android:textColor="#b30000"
+                        android:padding="5sp"
+                        android:textSize="16dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -764,7 +1054,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10sp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -819,7 +1110,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-
+                        android:padding="5sp"
                         android:weightSum="2">
 
                         <LinearLayout
@@ -899,7 +1190,10 @@
                         android:text="@string/brakr"
                         android:textColor="@color/colorPrimary"
                         android:textSize="16dp"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="5sp"
                         android:layout_gravity="center"
+                        android:layout_marginRight="10sp"
                         android:textStyle="bold" />
 
                     <View
@@ -907,37 +1201,95 @@
                         android:layout_height="0.5dp"
                         android:background="@color/colorPrimary" />
 
+
                     <LinearLayout
                         android:id="@+id/check_break_fri"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
                         android:orientation="horizontal"
-                        android:weightSum="1">
+                        android:padding="5sp"
+                        android:weightSum="2">
 
-                        <TextView
-                            android:id="@+id/start_break_fri"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:textSize="20dp" />
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:text="Break"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/start_break_fri"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_weight="1"
+                                android:text="@string/time"
+                                android:textSize="18dp" />
+
+
+                        </LinearLayout>
+
                         <View
                             android:layout_width="0.5dp"
                             android:layout_height="40dp"
-                            android:background="@color/colorPrimary"/>
-                        <TextView
-                            android:id="@+id/end_break_fri"
-                            android:layout_width="wrap_content"
+                            android:background="@color/colorPrimary"></View>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:textSize="20dp" />
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:text="@string/to"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/end_break_fri"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_weight="1"
+                                android:text="@string/time"
+                                android:textSize="18dp" />
+
+
+                        </LinearLayout>
 
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@color/colorPrimary" />
+                        android:background="@color/colorPrimary"/>
+                    <TextView
+                        android:id="@+id/remove_break_fri"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:text="@string/remove"
+                        android:textColor="#b30000"
+                        android:padding="5sp"
+                        android:textSize="16dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -945,7 +1297,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10sp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -1000,7 +1353,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-
+                        android:padding="5sp"
                         android:weightSum="2">
 
                         <LinearLayout
@@ -1083,6 +1436,9 @@
                         android:textColor="@color/colorPrimary"
                         android:textSize="16dp"
                         android:layout_gravity="center"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="5sp"
+                        android:layout_marginRight="10sp"
                         android:textStyle="bold" />
 
                     <View
@@ -1094,33 +1450,90 @@
                         android:id="@+id/check_break_sat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
                         android:orientation="horizontal"
-                        android:weightSum="1">
-                        <TextView
-                            android:id="@+id/start_break_sat"
-                            android:layout_width="wrap_content"
+                        android:padding="5sp"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:textSize="20dp" />
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:text="Break"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/start_break_sat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_weight="1"
+                                android:text="@string/time"
+                                android:textSize="18dp" />
+
+
+                        </LinearLayout>
 
                         <View
                             android:layout_width="0.5dp"
                             android:layout_height="40dp"
-                            android:background="@color/colorPrimary"/>
-                        <TextView
-                            android:id="@+id/end_break_sat"
-                            android:layout_width="wrap_content"
+                            android:background="@color/colorPrimary"></View>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:textSize="20dp" />
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:text="@string/to"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/end_break_sat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_weight="1"
+                                android:text="@string/time"
+                                android:textSize="18dp" />
+
+
+                        </LinearLayout>
 
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@color/colorPrimary" />
+                        android:background="@color/colorPrimary"/>
+                    <TextView
+                        android:id="@+id/remove_break_sat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:text="@string/remove"
+                        android:textColor="#b30000"
+                        android:padding="5sp"
+                        android:textSize="16dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -1128,7 +1541,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10sp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -1183,7 +1597,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-
+                        android:padding="5sp"
                         android:weightSum="2">
 
                         <LinearLayout
@@ -1263,7 +1677,10 @@
                         android:text="@string/brakr"
                         android:textColor="@color/colorPrimary"
                         android:textSize="16dp"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="5sp"
                         android:layout_gravity="center"
+                        android:layout_marginRight="10sp"
                         android:textStyle="bold" />
 
                     <View
@@ -1271,39 +1688,94 @@
                         android:layout_height="0.5dp"
                         android:background="@color/colorPrimary" />
 
+
                     <LinearLayout
                         android:id="@+id/check_break_sun"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
                         android:orientation="horizontal"
-                        android:weightSum="1">
+                        android:padding="5sp"
+                        android:weightSum="2">
 
-                        <TextView
-                            android:id="@+id/start_break_sun"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:textSize="20dp" />
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:text="Break"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/start_break_sun"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_weight="1"
+                                android:text="@string/time"
+                                android:textSize="18dp" />
+
+
+                        </LinearLayout>
 
                         <View
                             android:layout_width="0.5dp"
                             android:layout_height="40dp"
-                            android:background="@color/colorPrimary"/>
+                            android:background="@color/colorPrimary"></View>
 
-                        <TextView
-                            android:id="@+id/end_break_sun"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:textSize="20dp" />
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:text="@string/to"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+
+                            <TextView
+                                android:id="@+id/end_break_sun"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_weight="1"
+                                android:text="@string/time"
+                                android:textSize="18dp" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
-                        android:background="@color/colorPrimary" />
+                        android:background="@color/colorPrimary"/>
+                    <TextView
+                        android:id="@+id/remove_break_sun"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:text="@string/remove"
+                        android:textColor="#b30000"
+                        android:padding="5sp"
+                        android:textSize="16dp"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 

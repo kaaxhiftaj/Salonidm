@@ -40,6 +40,7 @@
     <string name="to">TO</string>
     <string name="time">08:30 AM</string>
     <string name="brakr">ADD BREAK</string>
+    <string name="remove">REMOVE BREAK</string>
     <string name="phone">Phone # :</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

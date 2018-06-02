@@ -158,6 +158,21 @@ public class BusinessHoursFragment extends Fragment {
     TextView start_break_sun;
     @BindView(R.id.end_break_sun)
     TextView end_break_sun;
+
+    @BindView(R.id.remove_break_mon)
+    TextView tv_remove_break_mon;
+    @BindView(R.id.remove_break_tue)
+    TextView tv_remove_break_tue;
+    @BindView(R.id.remove_break_wed)
+    TextView tv_remove_break_wed;
+    @BindView(R.id.remove_break_thur)
+    TextView tv_remove_break_thur;
+    @BindView(R.id.remove_break_fri)
+    TextView tv_remove_break_fri;
+    @BindView(R.id.remove_break_sat)
+    TextView tv_remove_break_sat;
+    @BindView(R.id.remove_break_sun)
+    TextView tv_remove_break_sun;
     final Calendar calendar=Calendar.getInstance();
 
 
@@ -232,13 +247,16 @@ public class BusinessHoursFragment extends Fragment {
 
                         if (check_day.contains("0")) {
                             swich.setChecked(false);
+                            swich.setClickable(false);
                             layout_checkHour.setVisibility(View.GONE);
                             layout_break.setVisibility(View.GONE);
+                            tv_remove_break_mon.setVisibility(View.GONE);
                         }
 
                         if (break_day.contains("0") || break_day.contains("")) {
                             layout_break.setVisibility(View.GONE);
                             tv_break_mon.setVisibility(View.VISIBLE);
+                            tv_remove_break_mon.setVisibility(View.GONE);
                             tv_break_mon.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
@@ -248,8 +266,11 @@ public class BusinessHoursFragment extends Fragment {
                             });
                         }
                         if (break_day.contains("1")) {
+                            swich.setClickable(false);
+                            swich.setChecked(true);
                             layout_break.setVisibility(View.VISIBLE);
                             tv_break_mon.setVisibility(View.GONE);
+                            tv_remove_break_mon.setVisibility(View.VISIBLE);
                             start_break_mon.setText(break_start_time);
                             end_break_mon.setText(break_end_time);
                         }
@@ -270,12 +291,15 @@ public class BusinessHoursFragment extends Fragment {
 
                         if (check_day_tue.contains("0")) {
                             swich_tue.setChecked(false);
+                            swich_tue.setClickable(false);
                             layout_checkHour_tue.setVisibility(View.GONE);
                             layout_break_tue.setVisibility(View.GONE);
+                            tv_remove_break_tue.setVisibility(View.GONE);
                         }
                         if (break_day_tue.contains("0") || break_day_tue.contains("")) {
                             layout_break_tue.setVisibility(View.GONE);
                             tv_break_tue.setVisibility(View.VISIBLE);
+                            tv_remove_break_tue.setVisibility(View.GONE);
                             tv_break_tue.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
@@ -286,8 +310,11 @@ public class BusinessHoursFragment extends Fragment {
                         }
 
                         if (break_day_tue.contains("1")) {
+                            swich_tue.setChecked(true);
+                            swich_tue.setClickable(false);
                             layout_break_tue.setVisibility(View.VISIBLE);
                             tv_break_tue.setVisibility(View.GONE);
+                            tv_remove_break_tue.setVisibility(View.VISIBLE);
                             start_break_tue.setText(break_start_time_tue);
                             end_break_tue.setText(break_end_time_tue);
                         }
@@ -308,6 +335,7 @@ public class BusinessHoursFragment extends Fragment {
 
                         if (check_day_wed.contains("0")) {
                             swich_wed.setChecked(false);
+                            swich_wed.setClickable(false);
                             layout_checkHour_wed.setVisibility(View.GONE);
                             layout_break_wed.setVisibility(View.GONE);
                         }
@@ -323,8 +351,11 @@ public class BusinessHoursFragment extends Fragment {
                         }
 
                         if (break_day_wed.contains("1")) {
+                            swich_wed.setChecked(true);
+                            swich_wed.setClickable(false);
                             layout_break_wed.setVisibility(View.VISIBLE);
                             tv_break_wed.setVisibility(View.GONE);
+                            tv_remove_break_wed.setVisibility(View.VISIBLE);
                             start_break_wed.setText(break_start_time_wed);
                             end_break_wed.setText(break_end_time_wed);
                         }
@@ -346,6 +377,7 @@ public class BusinessHoursFragment extends Fragment {
 
                         if (check_day_thur.contains("0")) {
                             swich_thur.setChecked(false);
+                            swich_thur.setClickable(false);
                             layout_checkHour_thur.setVisibility(View.GONE);
                             layout_break_thur.setVisibility(View.GONE);
                         }
@@ -361,8 +393,11 @@ public class BusinessHoursFragment extends Fragment {
                         }
 
                         if (break_day_thur.contains("1")) {
+                            swich_thur.setChecked(true);
+                            swich_thur.setClickable(false);
                             layout_break_thur.setVisibility(View.VISIBLE);
                             tv_break_thur.setVisibility(View.GONE);
+                            tv_remove_break_thur.setVisibility(View.VISIBLE);
                             start_break_thur.setText(break_start_time_thur);
                             end_break_thur.setText(break_end_time_thur);
                         }
@@ -384,6 +419,7 @@ public class BusinessHoursFragment extends Fragment {
 
                         if (check_day_fri.contains("0")) {
                             swich_fri.setChecked(false);
+                            swich_fri.setClickable(false);
                             layout_checkHour_fri.setVisibility(View.GONE);
                             layout_break_fri.setVisibility(View.GONE);
                         }
@@ -399,8 +435,11 @@ public class BusinessHoursFragment extends Fragment {
                         }
 
                         if (break_day_fri.contains("1")) {
+                            swich_fri.setChecked(true);
+                            swich_fri.setClickable(false);
                             layout_break_fri.setVisibility(View.VISIBLE);
                             tv_break_fri.setVisibility(View.GONE);
+                            tv_remove_break_fri.setVisibility(View.VISIBLE);
                             start_break_fri.setText(break_start_time_fri);
                             end_break_fri.setText(break_end_time_fri);
                         }
@@ -421,6 +460,7 @@ public class BusinessHoursFragment extends Fragment {
                         from_sat.setText(start_time_sat);
                         if (check_day_sat.contains("0")) {
                             swich_sat.setChecked(false);
+                            swich_sat.setClickable(false);
                             layout_checkHour_sat.setVisibility(View.GONE);
                             layout_break_sat.setVisibility(View.GONE);
                         }
@@ -437,8 +477,11 @@ public class BusinessHoursFragment extends Fragment {
                         }
 
                         if (break_day_sat.contains("1")) {
+                            swich_sat.setChecked(true);
+                            swich_sat.setClickable(false);
                             layout_break_sat.setVisibility(View.VISIBLE);
                             tv_break_sat.setVisibility(View.GONE);
+                            tv_remove_break_sat.setVisibility(View.VISIBLE);
                             start_break_sat.setText(break_start_time_sat);
                             end_break_sat.setText(break_end_time_sat);
                         }
@@ -459,6 +502,7 @@ public class BusinessHoursFragment extends Fragment {
                         to_sun.setText(end_time_sun);
                         if (check_day_sun.contains("0")) {
                             swich_sun.setChecked(false);
+                            swich_sun.setClickable(false);
                             layout_checkHour_sun.setVisibility(View.GONE);
                             layout_break_sun.setVisibility(View.GONE);
                         }
@@ -475,8 +519,11 @@ public class BusinessHoursFragment extends Fragment {
                         }
 
                         if (break_day_sun.contains("1")) {
+                            swich_sun.setChecked(true);
+                            swich_sun.setClickable(false);
                             layout_break_sun.setVisibility(View.VISIBLE);
                             tv_break_sun.setVisibility(View.GONE);
+                            tv_remove_break_sun.setVisibility(View.VISIBLE);
                             start_break_sun.setText(break_start_time_sun);
                             end_break_sun.setText(break_end_time_sun);
                         }
@@ -614,13 +661,13 @@ public class BusinessHoursFragment extends Fragment {
         dialog.setContentView(R.layout.custom_dialoge_layout);
         TextView tv_dialog_from = dialog.findViewById(R.id.tv_dialoge_from);
         TextView tv_dialog_to = dialog.findViewById(R.id.tv_dialoge_to);
-        final EditText editText1 = dialog.findViewById(R.id.dialoge_break_from);
-        final EditText editText2 = dialog.findViewById(R.id.dialog_break_to);
+        final TextView Text1 = dialog.findViewById(R.id.dialoge_break_from);
+        final TextView Text2 = dialog.findViewById(R.id.dialog_break_to);
         Button btnUpdate = (Button) dialog.findViewById(R.id.update);
         tv_dialog_from.setText(from);
         tv_dialog_to.setText(to);
 
-        editText1.setOnClickListener(new View.OnClickListener() {
+        Text1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int hour = calendar.get(Calendar.HOUR_OF_DAY);
@@ -630,14 +677,14 @@ public class BusinessHoursFragment extends Fragment {
                 mTimePicker = new TimePickerDialog(getActivity(),R.style.TimePickerTheme, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute)   {
-                        editText1.setText( selectedHour + ":" + selectedMinute + ":" + second);
+                        Text1.setText( selectedHour + ":" + selectedMinute + ":" + second);
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.show();
             }
         });
 
-        editText2.setOnClickListener(new View.OnClickListener() {
+        Text2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int hour = calendar.get(Calendar.HOUR_OF_DAY);
@@ -647,7 +694,7 @@ public class BusinessHoursFragment extends Fragment {
                 mTimePicker = new TimePickerDialog(getActivity(),R.style.TimePickerTheme, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute)   {
-                        editText2.setText( selectedHour + ":" + selectedMinute + ":" + second);
+                        Text2.setText( selectedHour + ":" + selectedMinute + ":" + second);
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.show();
@@ -657,7 +704,7 @@ public class BusinessHoursFragment extends Fragment {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiCallforBusinessHour(strBreakDay,breakStart_time, breakEnd_time, editText1.getText().toString(), editText2.getText().toString());
+                apiCallforBusinessHour(strBreakDay,breakStart_time, breakEnd_time, Text1.getText().toString(), Text2.getText().toString());
                 dialog.dismiss();
                 apicall();
             }
