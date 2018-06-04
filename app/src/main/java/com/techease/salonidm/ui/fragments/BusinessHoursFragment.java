@@ -114,7 +114,7 @@ public class BusinessHoursFragment extends Fragment {
     LinearLayout layout_checkday_sat, layout_checkHour_sat, layout_checkday_sun, layout_checkHour_sun;
     TextView to, from;
     android.support.v7.widget.SwitchCompat swich, swich_tue, swich_wed, swich_thur, swich_fri, swich_sat, swich_sun;
-    String strHours, strTo;
+
     @BindView(R.id.break_mon)
     TextView tv_break_mon;
     @BindView(R.id.break_tue)
@@ -251,6 +251,7 @@ public class BusinessHoursFragment extends Fragment {
                             layout_checkHour.setVisibility(View.GONE);
                             layout_break.setVisibility(View.GONE);
                             tv_remove_break_mon.setVisibility(View.GONE);
+                            tv_break_mon.setVisibility(View.GONE);
                         }
 
                         if (break_day.contains("0") || break_day.contains("")) {
@@ -273,6 +274,14 @@ public class BusinessHoursFragment extends Fragment {
                             tv_remove_break_mon.setVisibility(View.VISIBLE);
                             start_break_mon.setText(break_start_time);
                             end_break_mon.setText(break_end_time);
+
+                            tv_remove_break_mon.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    apiCallRemoveBreak("break_day_monday");
+                                    apicall();
+                                }
+                            });
                         }
 
                         //for tuesday
@@ -295,6 +304,7 @@ public class BusinessHoursFragment extends Fragment {
                             layout_checkHour_tue.setVisibility(View.GONE);
                             layout_break_tue.setVisibility(View.GONE);
                             tv_remove_break_tue.setVisibility(View.GONE);
+                            tv_break_tue.setVisibility(View.GONE);
                         }
                         if (break_day_tue.contains("0") || break_day_tue.contains("")) {
                             layout_break_tue.setVisibility(View.GONE);
@@ -304,7 +314,7 @@ public class BusinessHoursFragment extends Fragment {
                                 @Override
                                 public void onClick(View v) {
                                     showDialog("break_day_tuesday","break_start_time_tuesday", "break_end_time_tuesday", start_time_tue, end_time_tue);
-
+                                    apicall();
                                 }
                             });
                         }
@@ -317,6 +327,13 @@ public class BusinessHoursFragment extends Fragment {
                             tv_remove_break_tue.setVisibility(View.VISIBLE);
                             start_break_tue.setText(break_start_time_tue);
                             end_break_tue.setText(break_end_time_tue);
+
+                            tv_remove_break_tue.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    apiCallRemoveBreak("break_day_tuesday");
+                                }
+                            });
                         }
                         //end
 
@@ -338,10 +355,12 @@ public class BusinessHoursFragment extends Fragment {
                             swich_wed.setClickable(false);
                             layout_checkHour_wed.setVisibility(View.GONE);
                             layout_break_wed.setVisibility(View.GONE);
+                            tv_break_wed.setVisibility(View.GONE);
                         }
                         if (break_day_wed.contains("0") || break_day_wed.contains("")) {
                             layout_break_wed.setVisibility(View.GONE);
                             tv_break_wed.setVisibility(View.VISIBLE);
+                            tv_remove_break_wed.setVisibility(View.GONE);
                             tv_break_wed.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
@@ -358,6 +377,13 @@ public class BusinessHoursFragment extends Fragment {
                             tv_remove_break_wed.setVisibility(View.VISIBLE);
                             start_break_wed.setText(break_start_time_wed);
                             end_break_wed.setText(break_end_time_wed);
+                            tv_remove_break_wed.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    apiCallRemoveBreak("break_day_wednesday");
+                                    apicall();
+                                }
+                            });
                         }
 
                         //end
@@ -380,9 +406,11 @@ public class BusinessHoursFragment extends Fragment {
                             swich_thur.setClickable(false);
                             layout_checkHour_thur.setVisibility(View.GONE);
                             layout_break_thur.setVisibility(View.GONE);
+                            tv_break_thur.setVisibility(View.GONE);
                         }
                         if (break_day_thur.contains("0") || break_day_thur.contains("")) {
                             layout_break_thur.setVisibility(View.GONE);
+                            tv_remove_break_thur.setVisibility(View.GONE);
                             tv_break_thur.setVisibility(View.VISIBLE);
                             tv_break_thur.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -400,6 +428,14 @@ public class BusinessHoursFragment extends Fragment {
                             tv_remove_break_thur.setVisibility(View.VISIBLE);
                             start_break_thur.setText(break_start_time_thur);
                             end_break_thur.setText(break_end_time_thur);
+
+                            tv_remove_break_thur.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    apiCallRemoveBreak("break_day_thursday");
+                                    apicall();
+                                }
+                            });
                         }
 
                         //end
@@ -422,9 +458,11 @@ public class BusinessHoursFragment extends Fragment {
                             swich_fri.setClickable(false);
                             layout_checkHour_fri.setVisibility(View.GONE);
                             layout_break_fri.setVisibility(View.GONE);
+                            tv_break_fri.setVisibility(View.GONE);
                         }
                         if (break_day_fri.contains("0") || break_day_fri.contains("")) {
                             layout_break_fri.setVisibility(View.GONE);
+                            tv_remove_break_fri.setVisibility(View.GONE);
                             tv_break_fri.setVisibility(View.VISIBLE);
                             tv_break_fri.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -442,6 +480,14 @@ public class BusinessHoursFragment extends Fragment {
                             tv_remove_break_fri.setVisibility(View.VISIBLE);
                             start_break_fri.setText(break_start_time_fri);
                             end_break_fri.setText(break_end_time_fri);
+
+                            tv_remove_break_fri.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    apiCallRemoveBreak("break_day_friday");
+                                    apicall();
+                                }
+                            });
                         }
 
                         //end
@@ -463,9 +509,11 @@ public class BusinessHoursFragment extends Fragment {
                             swich_sat.setClickable(false);
                             layout_checkHour_sat.setVisibility(View.GONE);
                             layout_break_sat.setVisibility(View.GONE);
+                            tv_break_sat.setVisibility(View.GONE);
                         }
                         if (break_day_sat.contains("0") || break_day_sat.contains("")) {
                             layout_break_sat.setVisibility(View.GONE);
+                            tv_remove_break_sat.setVisibility(View.GONE);
                             tv_break_sat.setVisibility(View.VISIBLE);
                             tv_break_sat.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -484,6 +532,14 @@ public class BusinessHoursFragment extends Fragment {
                             tv_remove_break_sat.setVisibility(View.VISIBLE);
                             start_break_sat.setText(break_start_time_sat);
                             end_break_sat.setText(break_end_time_sat);
+
+                            tv_remove_break_sat.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    apiCallRemoveBreak("break_day_saturday");
+                                    apicall();
+                                }
+                            });
                         }
 
                         //end
@@ -505,9 +561,11 @@ public class BusinessHoursFragment extends Fragment {
                             swich_sun.setClickable(false);
                             layout_checkHour_sun.setVisibility(View.GONE);
                             layout_break_sun.setVisibility(View.GONE);
+                            tv_break_sun.setVisibility(View.GONE);
                         }
                         if (break_day_sun.contains("0") || break_day_sun.contains("")) {
                             layout_break_sun.setVisibility(View.GONE);
+                            tv_remove_break_sun.setVisibility(View.GONE);
                             tv_break_sun.setVisibility(View.VISIBLE);
                             tv_break_sun.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -517,7 +575,6 @@ public class BusinessHoursFragment extends Fragment {
                                 }
                             });
                         }
-
                         if (break_day_sun.contains("1")) {
                             swich_sun.setChecked(true);
                             swich_sun.setClickable(false);
@@ -526,6 +583,14 @@ public class BusinessHoursFragment extends Fragment {
                             tv_remove_break_sun.setVisibility(View.VISIBLE);
                             start_break_sun.setText(break_start_time_sun);
                             end_break_sun.setText(break_end_time_sun);
+
+                            tv_remove_break_sun.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    apiCallRemoveBreak("break_day_sunday");
+                                    apicall();
+                                }
+                            });
                         }
 
                         //end
@@ -711,5 +776,51 @@ public class BusinessHoursFragment extends Fragment {
         });
 
         dialog.show();
+    }
+
+    public void apiCallRemoveBreak(final String removeBreak){
+        final StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.salonidm.com/salonpro/api/web/v1/merchant-working-hours/update-timeslots"
+                , new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try{
+                    if (alertDialog != null)
+                        alertDialog.dismiss();
+                    Toast.makeText(getActivity(), "Break Removed", Toast.LENGTH_SHORT).show();
+                    apicall();
+                }
+                catch (Exception e){
+
+                }
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (alertDialog != null)
+                    alertDialog.dismiss();
+
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded;charset=UTF-8";
+            }
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("vAuthToken", token);
+                params.put(removeBreak,"0");
+                return params;
+            }
+
+        };
+        RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        mRequestQueue.add(stringRequest);
+
     }
 }
